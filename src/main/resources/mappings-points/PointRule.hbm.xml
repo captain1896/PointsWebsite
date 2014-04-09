@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.PointRule" table="points_point_rule">
+        <id name="id" column="ID">
+            <generator class="native" />
+        </id>
+		<property name="activityId" >
+			<column name="ACTIVITY_ID" />
+		</property>
+		<property name="points" >
+			<column name="POINTS" />
+		</property>
+        <property name="pointsRuleType" column="TYPE">
+            <type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+                <param name="enum">com.buzzinate.bshare.points.bean.enums.PointsRuleType</param>
+            </type>
+        </property>
+        <property name="num" >
+            <column name="NUM" />
+        </property>
+        <property name="productId" >
+            <column name="PRODUCT_ID" />
+        </property>	
+        <property name="productNum" >
+            <column name="PRODUCT_NUM" />
+        </property>	
+	</class>
+	
+	<query name="PointRule.getPointRuleByActivityId">
+        from PointRule p where p.activityId = :activityId
+    </query>
+    <query name="PointRule.deletePointRules">
+       delete from PointRule WHERE activityId=:activityId
+    </query>
+	
+</hibernate-mapping>

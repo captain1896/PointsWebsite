@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.PointsActivityStat" table="points_activity_stat">
+        <id name="activityId" column="activity_id">
+        </id>
+		<property name="accept" >
+			<column name="accept" />
+		</property>
+		<property name="reject" >
+			<column name="reject" />
+		</property>
+		<property name="finish" >
+			<column name="finish" />
+		</property>	
+	</class>
+	<sql-query name="PointsActivityStat.statNum">
+        insert into points_activity_stat (activity_id, accept, reject,finish) 
+        values (:activityId, :accept,:reject,:finish)
+        on duplicate key update
+            accept = accept + :accept,
+            reject = reject + :reject,
+            finish = finish + :finish
+    </sql-query>
+</hibernate-mapping>

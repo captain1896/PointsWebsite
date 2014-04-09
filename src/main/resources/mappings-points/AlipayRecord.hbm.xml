@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.AlipayRecord" table="points_alipay_record">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="recordId" >
+			<column name="RECORD_ID" />
+		</property>
+        <property name="amount" >
+            <column name="TOTAL_FEE" />
+        </property>
+        <property name="points" >
+            <column name="POINTS" />
+        </property>
+        <property name="poundage" >
+            <column name="POUNDAGE" />
+        </property>
+		<property name="tradeNo" >
+			<column name="TRADE_NO" />
+		</property>
+        <property name="tradeStatus" column="TRADE_STATUS">
+            <type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+                <param name="enum">com.buzzinate.bshare.points.bean.enums.TradeStatus</param>
+            </type>
+        </property>
+		<property name="createTime" >
+			<column name="CREATE_TIME" />
+		</property>
+		<property name="paymentTime" >
+			<column name="PAYMENT_TIME" />
+		</property>
+	</class>
+</hibernate-mapping>

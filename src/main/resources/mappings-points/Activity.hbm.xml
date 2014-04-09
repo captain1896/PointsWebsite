@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.Activity" table="points_activity">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="publisherId" >
+			<column name="PUBLISHER_ID" />
+		</property>
+		<property name="uuid" >
+			<column name="UUID" />
+		</property>
+        <property name="url" >
+            <column name="URL" />
+        </property>
+        <property name="pic" >
+            <column name="PIC" />
+        </property>
+		<property name="name" >
+			<column name="NAME" />
+		</property>
+		<property name="description" >
+			<column name="DESCRIPTION" />
+		</property>
+		<property name="startDate" >
+            <column name="START_DATE" />
+        </property>
+        <property name="endDate" >
+            <column name="END_DATE" />
+        </property>
+        <property name="totalPoints" >
+            <column name="TOTAL_POINTS" />
+        </property>
+        <property name="usedPoints" >
+            <column name="USED_POINTS" />
+        </property>
+        <property name="publisherName" >
+            <column name="PUBLISHER_NAME" />
+        </property>
+        <property name="publisherSite" >
+            <column name="PUBLISHER_SITE" />
+        </property>		
+		<property name="activityType" column="STATUS">
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.ActivityType</param>
+			</type>
+		</property>
+		<property name="activityCate" column="ACTIVITY_CATE">
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.ActivityCategory</param>
+			</type>
+		</property>
+		<one-to-one name="activityLimitRule" class="com.buzzinate.bshare.points.bean.ActivityLimitRule" cascade="all"/>
+		<property name="activityInfo" >
+            <column name="ACTIVITY_INFO" />
+        </property>		
+	</class>
+	
+    <query name="Activity.getActivityByUserId">
+        from Activity s where s.publisherId = :publisherId and s.activityType!=5 order by s.startDate desc
+    </query>
+    <query name="Activity.getActivityByUuid">
+        from Activity s where s.uuid = :uuid order by s.startDate desc
+    </query>
+    <query name="Activity.getUnderWayActivityByUserId">
+        from Activity s where s.publisherId = :publisherId and s.activityType in (1, 2) and current_date() between s.startDate and s.endDate order by s.startDate asc
+    </query>
+    <query name="Activity.getNormalActivityByUserId">
+        from Activity s where s.publisherId = :publisherId and s.activityType in (:activityType1, :activityType2) order by s.startDate asc
+    </query>
+    <query name="Activity.checkCoflictActivityByUuIdAndTime">
+        <![CDATA[from Activity s where s.uuid = :uuid and s.activityType in (1, 2) and s.startDate<=:endDate and s.endDate>=:startDate]]>
+    </query>
+    <query name="Activity.getFinishActivityByDate">
+        <![CDATA[from Activity s where s.endDate <= :day and s.activityType < :activityType]]>
+    </query>
+    <query name="Activity.getStartActivityByDate">
+        from Activity s where s.startDate = :day
+    </query>
+    <query name="Activity.setTypeToExpired">
+        update Activity s set s.activityType = :activityType where s.id = :id
+    </query>
+    
+    <query name="Activity.getCurrentActivity">
+        from Activity a where a.uuid = :uuid 
+        and current_date() between a.startDate and a.endDate  
+        and a.activityType in (1,2)
+    </query>
+    
+    <query name="Activity.getActivityByDate">
+        <![CDATA[from Activity s where s.publisherId = :publisherId and s.activityType!=5 and  (s.startDate <=:dateEnd and  s.endDate>=:dateStart)]]>
+    </query>
+    
+    <query name="Activity.getActivityByDateAndUuid">
+        <![CDATA[from Activity s where s.publisherId = :publisherId and s.activityType!=5 and (s.uuid=:uuid or :uuid=convert('1',BINARY)) and  (s.startDate <=:dateEnd and s.endDate>=:dateStart)]]>
+    </query>
+    
+    <query name="Activity.getActivityByCate">
+        <![CDATA[from Activity s where (s.publisherId = :publisherId or (s.publisherId != 98133 and :publisherId=-1)) and (s.uuid=:uuid or :uuid=convert('1',BINARY)) and  s.activityCate = :activityCate and s.activityType in (1,2) and s.startDate <=:curDate and s.endDate > addDate(:curDate,-1) order by s.startDate desc]]>
+    </query>
+    
+    <query name="Activity.getNormalActivitys">
+       <![CDATA[from Activity s where s.activityType in (1,2) and (s.activityCate=1 or (s.publisherId=98133 and s.activityCate!=1)) and s.totalPoints>s.usedPoints and  s.startDate <=now() and s.endDate > addDate(now(),-1) order by s.startDate desc]]>
+    </query>
+    
+    <query name="Activity.getCountNormalActivitys">
+       <![CDATA[select count(*) from Activity s where s.activityType in (1,2) and (s.activityCate=1 or (s.publisherId=98133 and s.activityCate!=1)) and s.totalPoints>s.usedPoints and  s.startDate <=now() and s.endDate> addDate(now(),-1)]]>
+    </query>
+    
+    <query name="Activity.decrActivityPoints">
+        update Activity s set s.usedPoints = s.usedPoints +:usedPoints where s.id=:activityId and s.totalPoints >= s.usedPoints +:usedPoints
+    </query>
+    <query name="Activity.getActivityByIds">
+       from Activity s where s.id in (:ids_list) order by s.usedPoints desc
+    </query>
+    <sql-query name="Activity.updateInfo">
+        update points_activity set name = :name, description = :description, domain = :domain, activity_info = :activityInfo, url = :url, pic = :pic, start_date = :startDate, end_date = :endDate, status = :status, total_points = :totalPoints,publisher_name=:publisher_name,publisher_site=:publisher_site where id =:id
+    </sql-query>
+    <sql-query name="Activity.getSpecialActivityIds">
+        SELECT ACTIVITY_ID FROM points_activity_special WHERE type = :type
+    </sql-query>
+    <sql-query name="Activity.existsSPActivity">
+    	<return-scalar column="count" type="long"/>
+        SELECT count(*) count FROM points_activity_special WHERE ACTIVITY_ID =:activityId
+    </sql-query>
+</hibernate-mapping>

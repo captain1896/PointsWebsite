@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.Account" table="points_account">
+		<id name="publisherId" column="PUBLISHER_ID"></id>
+		<property name="currentPoints" >
+			<column name="CURRENT_POINTS" />
+		</property>
+		<property name="totalCharge" >
+			<column name="TOTAL_CHARGE" />
+		</property>
+		<property name="totalUsed" >
+			<column name="TOTAL_USED" />
+		</property>
+		<property name="availablePoints" >
+			<column name="AVAILABLE_POINTS" />
+		</property>
+	</class>
+	
+	<query name="account.charge">
+        update Account ac set ac.currentPoints=ac.currentPoints+:points, 
+            ac.totalCharge=ac.totalCharge+:points, ac.availablePoints=ac.availablePoints+:points
+        where ac.publisherId=:publisherId
+    </query>
+	
+	<query name="account.chargewithtradno">
+        update Account ac set ac.currentPoints=ac.currentPoints+:points, 
+            ac.totalCharge=ac.totalCharge+:points, ac.availablePoints=ac.availablePoints+:points
+        where ac.publisherId=:publisherId
+         and exists(select 1 from AlipayRecord t where t.tradeNo=:tradeNo and t.tradeStatus=:tradStatus)
+    </query>
+    
+    <query name="account.returnPoints">
+        update Account ac set ac.currentPoints = ac.currentPoints - :usedPoints, 
+        ac.availablePoints = ac.availablePoints + :returnPoints 
+        where ac.publisherId=:publisherId
+    </query>
+    
+    <query name="account.freezenPoints">
+        update Account t set t.availablePoints=t.availablePoints-:points where t.publisherId=:userId and t.availablePoints>=:points
+    </query>
+    
+    <query name="account.usedPoints">
+        update Account ac set ac.totalUsed = ac.totalUsed + :usedPoints
+        where ac.publisherId=:publisherId
+    </query>
+        
+ </hibernate-mapping>

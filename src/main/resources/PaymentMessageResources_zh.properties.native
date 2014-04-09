@@ -1,0 +1,13 @@
+#payment
+#john: i don't think this is being used....
+bshare.payment.alipay.config.partner.id=2088202669153323
+bshare.payment.alipay.config.key=elqhl35e0px4zyr9z4u4aenj9z4vo09o
+bshare.payment.alipay.config.seller.email=buzzinate@buzzinate.com
+bshare.payment.alipay.config.notify.url=http://pay.test:8080/js_jsp_utf8/NotifyUrl.jsp
+bshare.payment.alipay.config.return.url=http://pay.test:8080/js_jsp_utf8/ReturnUrl.jsp
+bshare.payment.alipay.config.show.url=http://www.bshare.cn
+bshare.payment.alipay.config.antiphishing=0
+bshare.payment.alipay.config.charset=UTF-8
+bshare.payment.alipay.config.sign.type=MD5
+bshare.payment.alipay.config.transport=http://www.bshare.cn
+bshare.payment.alipay.config.main.name=擘纳(上海)信息科技有限公司

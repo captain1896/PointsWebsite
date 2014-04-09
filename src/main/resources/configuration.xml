@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<configuration>
+    <properties fileName="config.properties.local" optional="true"/>
+    <properties fileName="config.properties.test" optional="true"/>
+    <properties fileName="config.properties" />
+    <properties fileName="config.payment.properties" />
+    <properties fileName="config-core.properties" />
+    <properties fileName="config-common.properties" />
+</configuration>

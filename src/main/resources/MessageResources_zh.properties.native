@@ -1,0 +1,801 @@
+#general
+bshare.points.title=微积分
+bshare.points.language.en=English
+bshare.points.language.zh=简体中文
+bshare.points.language.zh_TW=繁體中文
+bshare.points.lang.code=zh
+bshare.points.no.js=此页面使用Javascript。请在您的浏览器中启用Javascript，以浏览全页面。谢谢！
+bshare.points.loading=加载中
+bshare.points.hi=您好！
+bshare.points.point=微积分
+bshare.points.platform=平台
+bshare.points.search=查询
+bshare.points.status=状态
+bshare.points.operate=操作
+bshare.points.date=日期
+bshare.points.date.range=起止时间
+bshare.points.view.details=查看详情
+bshare.points.save=保存
+bshare.points.edit=编辑
+bshare.points.update=更新
+bshare.points.cancel=取消
+bshare.points.more=更多
+bshare.points.back=返回
+bshare.points.wait=请稍后...
+bshare.pagination.nextPage=下一页 >>
+bshare.pagination.skip=跳过 >>
+bshare.pagination.prevPage=<< 上一页
+
+
+bshare.no.js=此页面使用Javascript。请在您的浏览器中启用Javascript，以浏览全页面。谢谢！
+
+bshare.points.unauthorized=您无权限浏览此页面！
+
+#common
+bshare.points.common.delete=删除
+bshare.points.common.edit=更新
+bshare.points.common.delete.success=删除成功
+bshare.chart.popup.saveas.csv.note=以下是您请求的CSV格式数据。您可以复制到文字文件中。
+copy.to.clipboard=复制代码
+
+#homepage
+bshare.home=bShare首页
+bshare.points.home=微积分首页
+bshare.points.welcome=欢迎来到微积分
+bshare.points.welcome.points.avail=您可用微积分：
+bshare.points.welcome.points.using=您可投放微积分：
+bshare.points.who.using=谁在使用
+bshare.points.need.points=<span class="text-blue" style="display: block;margin-bottom: 5px;">兑换：</span><span class="text-blue keyword" style="margin-left: 0; font-size:14px;">{0}</span>微积分
+bshare.points.to.exchange=我要兑换
+
+
+#login
+bshare.points.login=请登录
+bshare.points.register=免费注册
+bshare.points.logout=退出
+bshare.points.login.help.username=您可以输入用户名或email邮箱登录。
+bshare.points.login.help.password=您的账户密码。
+bshare.points.login.note=请输入您的用户名及密码。您也可以用email邮箱登录。
+bshare.points.username=账户
+bshare.points.username.alt=邮箱/用户名
+bshare.points.password=密码
+bshare.points.remember.me=记住我的信息
+bshare.points.need.help.with.password=需要帮助吗？请点击
+bshare.points.no.account=还没有账户吗？
+bshare.points.login.forgot.password.link=忘记密码
+bshare.points.reset.password.register.link=注册
+bshare.points.verify.account.link=验证
+bshare.points.verify.account=需要验证账户吗？请点击
+bshare.points.already.have.account=已经有一个账户？
+bshare.points.userName.required=您必须输入用户名或email邮箱。
+bshare.points.userName.string.length=用户名必须为4-20个字符之间。
+bshare.points.userName.error=用户名错误。请确认后重新输入用户名或email邮箱。
+bshare.points.userAuthentication.invalid=用户名及密码错误。
+bshare.points.password.required=您必须输入密码！
+bshare.points.oauth.connect=你也可以通过以下账号登陆bShare
+bshare.points.cart.must.login=您必须先登入bShare才能进行服务购买。如果您还未注册bShare，请<a class="bLinkBlue" href="register">点击这里注册</a>。
+bshare.user.register.successfully = 恭喜您！ 您已在bShare.cn成功的注册了！
+bshare.points.user.profile=个人用户中心
+
+bshare.points.no.pointid=您还没有参与微积分站点合作，请联系我们！
+
+#publisher
+bshare.points.publisher=站长后台
+bshare.points.overview=总览
+bshare.points.account=帐号管理
+bshare.points.activities=活动管理
+bshare.points.statistics=数据管理
+bshare.points.statistics2=数据统计
+bshare.points.admin.publisher.add=添加发点商
+
+bshare.points.activities.overview=bShare微积分兑换中心欢迎您，您目前有<a id="numActivities" class="num-activities-red" href="javascript:;">{0}</a>个活动正在投放。
+bshare.points.account.deposit=您可用的账户余额
+bshare.points.topup=充值
+bshare.points.used=花费
+bshare.points.topup.history=历史记录
+
+bshare.points.activity.add=添加新活动
+bshare.points.activities.list=活动列表
+bshare.points.activity.nouuid =你当前没有添加网站，需要添加网站以后才能添加活动。
+
+bshare.points.stats.activities=活动数据
+bshare.points.stats.platforms=平台数据
+bshare.points.stats.platforms2=平台分布图
+bshare.points.stats.contrast=活动对比
+bshare.points.stats.user=意见领袖
+
+bshare.points.stats.unauthorized=您无权限浏览此页面。您必须是垓网站的站长才能查看网站数据。
+bshare.points.activities.active=正在投放的活动
+bshare.points.activity.name=活动名称
+bshare.points.activity.activityInfo=活动简介
+bshare.points.activity.description=活动描述
+bshare.points.activity.points.total=总投放微积分
+bshare.points.activity.points.used=已发放微积分
+bshare.points.activity.date.start=开始时间
+bshare.points.activity.date.end=结束时间
+bshare.points.effection=投放活动情况
+bshare.points.stats.views=浏览量
+bshare.points.stats.clicks=点击量
+bshare.points.stats.shares=分享量
+bshare.points.stats.burl.clicks=回流量
+bshare.points.stats.conversion.rates=转化率
+bshare.points.stats.rank=排名
+bshare.points.stats.none=尚无数据
+bshare.points.stats.loading=读取中...
+bshare.points.share.best.platform=分享量最好的平台
+bshare.points.share.best.activity=分享量最好的活动
+bshare.points.click.best.platform=回流量最好的平台
+bshare.points.click.best.activity=回流量最好的活动
+bshare.points.conversion.best.platform=转化率最好的平台
+bshare.points.conversion.best.activity=转化率最好的活动
+bshare.points.number.format={0}
+bshare.points.stats.activity.date = 请选择日期，然后点击查询按钮来显示活动列表：
+bshare.points.stats.activity.reselect = 你修改了时间，需要重新查询
+bshare.points.stats.activity.selectnote1=请选择您要对比的2个活动，点击对比按钮进行对比：
+bshare.points.stats.activity.selectnote2=你选择的时间段没有活动，请重新选择
+bshare.points.stats.activity.compare= 比较
+bshare.points.stats.activity.comparenote1= 请先选择两个活动
+bshare.points.stats.activity.comparenote2 = 请选择两个不同的活动
+bshare.points.stats.activity.date.tip = 如果你修改了时间,已查询的内容会被清除掉。
+bshare.points.stats.percentage=百分比
+
+bshare.points.account.start=您开户以来
+bshare.points.topup.total=总计充值
+bshare.points.points.current=现有微积分
+bshare.points.points.froozen=冻结微积分
+bshare.points.used.total=总计消费
+bshare.points.points.avail=可用微积分
+bshare.points.deposit.history=您的消费记录
+bshare.points.deposit.history.all=全部记录
+bshare.points.deposit.history.topup=充值记录
+bshare.points.deposit.history.used=花费记录
+bshare.points.calendar.inputs=months: "一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月",shortMonths: "一,二,三,四,五,六,七,八,九,十,十一,十二",days: "星期日,星期一,星期二,星期三,星期四,星期五,星期六",shortDays: "周日,周一,周二,周三,周四,周五,周六"
+bshare.points.record.date=日期
+bshare.points.record.description=描述
+bshare.points.record.quick.today=今天
+bshare.points.record.quick.week=最近7天
+bshare.points.record.quick.month.one=1个月
+bshare.points.record.quick.month.three=3个月
+bshare.points.record.quick.year=一年
+bshare.points.record.message.no=您目前没有<span id="recordType"></span>记录
+
+bshare.points.activity.edit=更新活动
+bshare.points.activity.status=规则状态
+bshare.points.activity.status.onging=正常
+bshare.points.activity.status.suspend=停止
+bshare.points.activity.status.closed=结束
+bshare.points.activity.action.delete=删除
+bshare.points.activity.action.edit=更新
+bshare.points.activity.action.add=添加
+bshare.points.activity.action.add.full=添加新活动
+bshare.points.activity.selector=选择活动
+bshare.points.platform.selector=选择平台
+bshare.points.activity.selector.all=全选/取消
+bshare.points.activity.points.put=投放微积分
+bshare.points.activity.points.put.total=微积分总计
+bshare.points.activity.points.used=已用微积分
+bshare.points.activity.rule=<p><span style="font-weight: bold;">获取微积分限制</span>：<br>1.用户每5次回流可获取1次回流微积分<br>2.每名用户每天可获取的微积分上限为20次回流微积分。<br>3.仅当分享到新浪微博、腾讯微博、QQ空间、搜狐微博、网易微博、人人网、开心网、天涯微博时方可获取微积分。<br>4.使用一键通一次分享到多个平台算多次分享行为。<p>例：用户A当日将一篇内容分享到了新浪及腾讯平台，则计2次微积分，而两边总共带来了5次回流，则可获得1次回流微积分。若当日获取的回流微积分达到10次，则无法再获取回流微积分</p>
+bshare.points.activity.rule.title=<span style="font-weight: bold;">活动规则</span>
+bshare.points.activity.rule.click=每5次回流可获取
+bshare.points.activity.uuid=网站UUID
+bshare.points.activity.domain=域　　名
+bshare.points.activity.url=活动页面
+bshare.points.activity.publishername = 主办方
+bshare.points.activity.publishersite = 官方主页
+bshare.points.activity.all=全部活动
+bshare.points.platform.all=全部平台
+bshare.points.activity.points.message=投放微积分和回流微积分必须为正整数。
+bshare.points.activity.publisher.uuid.message=必须选择UUID。
+bshare.points.activity.delete.message=确认删除该活动吗?
+bshare.points.activity.uuid.invalid=Uuid不合法
+
+bshare.points.activity.point.type.SHARE=分享
+bshare.points.activity.point.type.CLICKBACK=回流
+bshare.points.activity.status.type.INVALID=无效
+bshare.points.activity.status.type.VALID=有效
+
+#topup
+bshare.points.topup.name=微积分充值
+bshare.points.topup.points=充值
+bshare.points.topup.cost=支付
+bshare.points.topup.currency=元
+bshare.points.topup.pay.online=线上支付
+bshare.points.topup.pay.offline=或联系<a class="bLinkBlue" href="http://wpa.qq.com/msgrd?v=3&amp;uin=800087176&amp;site=qq&amp;menu=yes" target="_blank">客服</a>进行线下支付
+bshare.points.topup.message=充值微积分必须为正整数。
+bshare.points.order.history.no.orders=您没有任何订单
+bshare.points.order.history.view=查看您的购买历史
+bshare.points.order.history=购买历史
+bshare.points.order.cart=购物车
+bshare.points.order.time=订单时间
+bshare.points.order.order.no=订单编号
+bshare.points.order.product=项目
+bshare.points.order.points=微积分总数
+bshare.points.order.total=总价
+bshare.points.order.expire=截止日期
+bshare.points.order.month=个月
+bshare.points.order.year=年
+bshare.points.order.price=单价
+bshare.points.order.time.limit=时限
+bshare.points.order.checkout=结算
+bshare.points.order.buy.product=购买项目
+bshare.points.order.total.price=总金额
+bshare.points.order.fail=失败交易
+bshare.points.order.fail.note=请将您的订单号发送电子邮件到<a href="mailto:service@bshare.cn" target="_blank" class="bLinkBlue">service@bshare.cn</a>以完成交易。
+bshare.points.checkout.confirm=购买记录确认
+bshare.points.checkout.order.no=购买订单编号
+bshare.points.checkout.order.time=购买时间
+bshare.points.checkout.order.details=购买明细
+bshare.points.checkout.need.receipt=如何获得发票？
+bshare.points.checkout.payment.status=支付状态
+bshare.points.checkout.payment.complete=完成
+bshare.points.checkout.payment.waiting=等待支付
+bshare.points.checkout.payment.failed=失败
+bshare.points.checkout.top=请您确认以下购买记录，并进行在线支付
+bshare.points.checkout.top.note=bShare采用<a href="http://bizpartner.alipay.com/bshare" target="_blank" class="bLinkBlue">支付宝</a>提供在线支付，支持国内所有主流借记卡和信用卡在线支付，同时也支持中国移动、中国联通的手机充值卡支付。
+bshare.points.checkout.bottom.note=提示：通常情况下，所有购买项目会在支付成功后立即自动生效。如果支付成功后由于银行数据同步延迟造成购买项目无法自动生效，请您通过<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=800087176&amp;site=qq&amp;menu=yes" target="_blank">bShare 在线客服QQ</a>或来信到 <a class="bLinkBlue" target="_blank" href="mailto:feedback@bshare.cn" title="feedback@bshare.cn">feedback@bshare.cn</a>联系我们，并注明您的购买记录编号。我们会为您尽快处理。
+bshare.points.checkout.bottom.note2=建议选择以下在线支付方式 (支付成功后实时开通服务)
+
+bshare.points.name=bshare微积分
+
+
+#stats
+bshare.points.stats.user.uuid=用户 (vUid)
+bshare.points.stats.user.email=用户邮箱
+bshare.points.stats.user.action=动作
+#charts
+bshare.charts.popup.saveas.image.note=若要储存以下图片，请点击右键，选择“图片另存为”
+bshare.charts.popup.saveas.image=保存图像...
+bshare.charts.popup.saveas.csv=导出CSV
+bshare.charts.popup.saveas.csv.note=以下是您请求的CSV格式数据。您可以复制到文字文件中。
+bshare.charts.popup.saveas.csv.file=储存为CSV文件
+bshare.charts.popup.invalid.chart.id=不存在的图表ID：
+
+
+#user
+bshare.points.user=用户后台
+bshare.points.user.record.points=微积分记录
+bshare.points.user.record.activities=活动记录
+bshare.points.user.point.type=微积分类型
+bshare.points.user.point.name=微积分名称
+bshare.points.user.status.type=微积分状态
+bshare.points.user.points.amount=微积分余额
+bshare.points.user.orders=兑换记录
+bshare.points.user.order.no=兑换编号
+bshare.points.user.order.comment=备注
+bshare.points.user.order.nocomment=无
+bshare.points.user.order.productname=商品名称
+bshare.points.user.order.contactname=联系人
+bshare.points.user.order.contactno=联系电话
+bshare.points.user.order.contactaddress=联系地址
+bshare.points.user.order.zipcode=邮编
+bshare.points.user.order.orderstatus=兑换状态
+bshare.points.user.order.update = 更新状态
+bshare.points.user.order.updatenext = 更新为下一个状态
+bshare.points.user.order.updatenextconfirm = 你确定要把当前记录更新为对应的下个记录状态吗？
+bshare.points.user.order.updatenext.tip = 把当前记录修改为下个状态记录，例如:等待处理 ->处理完
+bshare.points.user.order.noupdate=当前状态没有更新，请更新后再提交。
+bshare.points.user.order.noselect=没有选择记录，请选择后再提交。
+bshare.points.user.order.noorderstatus=请选择需要更新的状态
+bshare.points.user.order.productnum=商品数量
+bshare.points.user.order.costpoint=兑换微积分
+bshare.points.user.order.ordertime=兑换时间
+bshare.points.user.record.orderrecords=兑换记录
+bshare.points.useractivity = 参加活动
+
+#admin
+bshare.points.admin=管理后台
+bshare.points.admin.publisher=发点商管理
+bshare.points.admin.merchant=烧点商管理
+bshare.points.admin.product=烧点商品管理
+bshare.points.admin.deposit=微积分充值管理
+bshare.points.admin.order=兑换记录管理
+bshare.points.admin.stats.active.sites=近期活跃网站
+bshare.points.admin.stats.daily=每日数据
+bshare.points.admin.stats.platforms=平台数据
+bshare.points.admin.stats.pages=页面数据
+bshare.points.admin.site.add=添加微积分站点
+bshare.points.admin.site.edit=更新微积分站点
+bshare.points.admin.site.email=站长 Email
+bshare.points.admin.site.point.id=微积分编号
+bshare.points.admin.site.point.name=微积分名称
+bshare.points.admin.site.status.onging=正常
+bshare.points.admin.site.status.suspend=停止
+bshare.points.admin.site.status.closed=结束
+
+bshare.points.admin.product.status.active=上线
+bshare.points.admin.product.status.inactive=下线
+bshare.points.admin.product.status.perfered=推荐
+
+bshare.points.admin.site.action.add=添加
+bshare.points.admin.topup.title=账户充值
+bshare.points.admin.topup.email=email
+bshare.points.admin.topup.points=充值微积分
+bshare.points.admin.topup.button=充值
+bshare.points.admin.topup.processing=充值中
+bshare.points.admin.topup.success=充值成功
+bshare.points.admin.topup.fail=充值失败
+bshare.points.admin.points.error=请输入合法的充值点数
+bshare.points.permission.unauthorized=您的权限不足，无法进入此页面
+
+bshare.points.admin.pointId.exist=微积分编号已存在
+bshare.points.admin.email.has.pointId=Email已有微积分编号
+bshare.points.admin.email.required=请输入Eamil
+bshare.points.admin.pointId.required=请输入有效的微积分编号
+bshare.points.admin.email.not.exist=Email不存在
+bshare.points.account.not.exist= 充值用户不是发点商
+bshare.points.admin.site.point.message=微积分编号必须为正整数。
+bshare.points.admin.site.topup.message=充值微积分必须为正整数。
+
+bshare.points.adminsites.message=点击以显示近期活跃网站数据（不含书签点击）
+bshare.points.adminsites.domain.name=域名
+bshare.points.website.name=网站名称
+bshare.points.website.type=网站类型
+bshare.points.website.url=网址
+bshare.points.admin.sites.sort.shares=按分享排序
+bshare.points.admin.sites.sort.clicks=按点击排序
+bshare.points.admin.sites.sort.views=按浏览排序
+bshare.points.admin.sites.sort.clickbacks=按回浏排序
+bshare.points.admin.sites.sort.shareCompare=按分享率排序
+bshare.points.admin.sites.sort.clickCompare=按点击率排序
+bshare.points.admin.sites.sort.viewCompare=按浏览率排序
+bshare.points.admin.sites.sort.clickBackCompare=按回浏率排序
+bshare.points.site.statistics=浏览此站点的数据！
+
+bshare.points.admin.merchant.add=添加烧点商
+bshare.points.admin.merchant.edit=编辑烧点商
+bshare.points.admin.merchant.name=烧点商名称
+bshare.points.admin.merchant.home.url=主页
+bshare.points.admin.merchant.join.time=加入时间
+bshare.points.admin.merchant.name.tip=必填，输入烧点商名称，最大长度40
+bshare.points.admin.merchant.home.url.tip=可选，输入烧点商介绍页面，最大长度150
+bshare.points.admin.merchart.has.exist=该烧点商已存在
+
+
+#product
+bshare.points.admin.product.add=添加烧点商品
+bshare.points.admin.product.edit=编辑烧点商品
+bshare.points.admin.product.name=商品名称
+bshare.points.admin.product.desc=商品描述
+bshare.points.admin.product.desc.url=商品页面
+bshare.points.admin.product.category=商品类别
+bshare.points.admin.product.pic=商品图片
+bshare.points.admin.product.brand=商品品牌
+bshare.points.admin.product.tags=商品标签
+bshare.points.admin.product.price=商品市场价格
+bshare.points.admin.product.initial.num=原始微积分
+bshare.points.admin.product.current.num=当前微积分
+bshare.points.admin.product.merchant=烧点商
+bshare.points.admin.product.store.num=库存
+bshare.points.admin.product.status=商品状态
+
+
+bshare.points.admin.product.name.tip=必填，请输入商品名称
+bshare.points.admin.product.desc.tip=选填，请输入商品描述 最大长度400
+bshare.points.admin.product.desc.url.tip=选填，请输入商品的描述页面
+bshare.points.admin.product.category.tip=必选，请选择商品类别
+bshare.points.admin.product.pic.tip=选填，请上传商品图片，如果没有则显示默认图片
+bshare.points.admin.product.brand.tip=选填，请输入商品品牌 最大长度100
+bshare.points.admin.product.tags.tip=选填，请输入商品标签 最大长度100
+bshare.points.admin.product.price.tip=必填，请输入商品市场价格
+bshare.points.admin.product.initial.num.tip=必填，请输入商品兑换所需原始微积分
+bshare.points.admin.product.current.num.tip=必填，请输入商品兑换所需当前微积分
+bshare.points.admin.product.merchant.tip=必选，请选择烧点商
+bshare.points.admin.product.store.num.tip=选填，请输入商品库存
+bshare.points.admin.product.status.tip=必选，请选择商品状态，默认为上架状态
+
+
+
+#tips
+bshare.points.activity.name.tip=必填，请输入有效的活动名称，最大长度 20
+bshare.points.activity.activityInfo.tip=选填，请输入有效的活动简介，最大长度 50
+bshare.points.activity.description.tip=必填，请输入有效的活动描述，最大长度 400
+bshare.points.activity.domain.tip=选填，请输入您要投放活动的站点主域名，如bShare.cn或baidu.com；如果需要在某一子域名或页面上投放活动，则输入完整网址，如http://www.bshare.cn或http://www.bshare.cn/xxxx.html
+bshare.points.activity.url.tip=必填，请输入活动的网址或者活动介绍的网址
+bshare.points.activity.publishername.tip=必填，用于活动介绍页面显示活动主办方，最大长度为50
+bshare.points.activity.publishersite.tip = 必填，用于活动介绍页面显示活动主办方链接主页，最大长度为100
+bshare.points.activity.points.put.tip=必填，请输入有效的整数，最小值为 1，最大值为可用微积分
+bshare.points.activity.points.put.tip2=必填，请输入有效的整数，最小值为 0，最大值为可用微积分
+bshare.points.activity.points.click.tip=必填，请输入有效的整数，最小值为 1，最大值为 10
+bshare.points.admin.email.tip=必填，请输入有效的 email
+bshare.points.admin.site.point.id.tip=必填，请输入有效的正整数
+bshare.points.admin.site.point.name.tip=必填，请输入有效的微积分名称，最大长度 50
+bshare.points.admin.topup.points.tip=必填，请输入有效的整数，最小值为 100，最大值为 1000000
+
+
+#help
+bshare.points.help=帮助
+
+
+#footer
+bshare.points.support=客服中心
+bshare.points.service=服务条款
+bshare.points.privacy=隐私权声明
+bshare.points.recruit=招贤纳士
+bshare.points.copyright=<a title="擘纳" href="http://www.buzzinate.com" target="_blank" class="text-white">擘纳</a>（上海）信息科技有限公司。版权所有
+bshare.contactus.qq.num=800087176
+
+#error
+bshare.points.common.error=出错了，请稍后重试！
+bshare.top.404=页面不存在！
+bshare.404.title=404：页面不存在！
+bshare.404.msg1=非常抱歉，您指定的页面不存在。
+bshare.404.msg2=若有其他疑问或是建议，请和我们联系。联系方式如下：
+bshare.top.error=发生未知错误！
+bshare.error.title=发生未知错误！
+bshare.error.msg1=非常抱歉，我们的系统发生了未知的错误。
+bshare.error.msg2=如果您愿意，请将此错误的详细信息（时间，浏览器，发生错误前的操作）发送给我们的系统管理员，这些信息对我们改进商品会有很大帮助。联系方法是：
+bshare.error.report=回报错误
+bshare.thank.you=谢谢您的合作！
+bshare.delete.activity.fail=删除失败，只能删除未开始的活动！
+bshare.finish.activity.fail=结束失败，只能结束未结束的活动！
+bshare.delete.activity.success=删除成功！
+bshare.finish.activity.success=结束成功！
+bshare.conflict.activity.fail=活动时间与已有活动冲突,请修改活动起止时间！
+bshare.points.not.enough.activity.fail=可用微积分不够，创建活动失败！   
+bshare.total.point.activity.fail=投放微积分要大于0，创建活动失败！
+bshare.rule.point.activity.fail=微积分规则要大于0，创建活动失败！
+bshare.rule.point.activity.fail.max=微积分规则不能大于10或总投放微积分
+bshare.stats.common.pathError=URL输入不正确,请重新输入
+bshare.payment.failure.error.message=交易失败，有问题请与我们客户联系。
+bshare.create.invalid.image.file=上传的图片格式不正确！
+
+bshare.points.rules.isempty=积分规则不能为空
+bshare.points.rules.mustbe.positive={0}必须为正整数
+bshare.points.rules.error=积分规则错误
+
+#js validate
+bshare.field.error.point.max=投放微积分必须小于可用微积分
+bshare.field.error.point.max2=此数字必须小于1,000,000
+bshare.field.error.point.max3=此数字必须小于10,000
+bshare.field.error.required=此域不能为空
+bshare.field.error.email=请输入有效的邮件地址
+bshare.field.error.general=无效的值
+bshare.field.error.number=请输入一个正整数
+bshare.field.error.url=请输入有效的链接
+bshare.field.error.max=此数字必须小于或等于$1
+bshare.field.error.min=此数字必须大于或等于$1
+bshare.field.error.text.exceeds=超出最大长度：$1
+bshare.field.error.number.exceeds=请输入大于等于$1，小于$2的整数
+bshare.field.error.product.price=商品市场价格无效
+bshare.field.error.mulitple =此数字必须是{0}的倍数
+
+
+bshare.language.en=English
+bshare.language.zh=简体中文
+bshare.language.zh_TW=繁體中文
+bshare.lang.code=zh
+bshare.points.top.404=页面不存在！
+bshare.points.404.title=404：页面不存在！
+bshare.points.404.msg1=非常抱歉，您指定的页面不存在。
+bshare.points.404.msg2=若有其他疑问或是建议，请和我们联系。联系方式如下：
+bshare.points.top.error=发生未知错误！
+bshare.points.error.title=发生未知错误！
+bshare.points.error.msg1=非常抱歉，我们的系统发生了未知的错误。
+bshare.points.error.msg2=如果您愿意，请将此错误的详细信息（时间，浏览器，发生错误前的操作）发送给我们的系统管理员，这些信息对我们改进商品会有很大帮助。联系方法是：
+bshare.points.error.report=报告错误
+bshare.points.thank.you=谢谢您的合作！
+bshare.points.privacy.title=隐私条款
+bshare.points.privacy.link=隐私条款
+
+bshare.points.access.denied=权限不足
+bshare.points.access.denied.msg=您没有权限访问此页面。
+bshare.points.access.denied.title=您无权访问!
+bshare.points.access.denied.body=您并无权限访问此页面。<br/><br/>若您认为有误，请发送邮件到 <a class="bLinkBlue" target="_blank" title="feedback@bshare.cn" href="mailto:feedback@bshare.cn">feedback@bshare.cn</a>.
+
+bshare.points.pageview.unauthorized=对不起，您目前无权限访问此页面！
+bshare.points.operation.unauthorized=对不起，您目前无权限进行此操作！
+bshare.points.update.activity.delete=更新的活动已经被删除
+
+#platform
+buzzinate.platform.name.facebook=Facebook
+buzzinate.platform.name.myspace=MySpace
+buzzinate.platform.name.netvibes=Netvibes
+buzzinate.platform.name.igoogle=iGoogle
+buzzinate.platform.name.delicious=Delicious
+buzzinate.platform.name.douban=豆瓣
+buzzinate.platform.name.kaixin001=开心网
+buzzinate.platform.name.kaixin=开心网
+buzzinate.platform.name.renren=人人网
+buzzinate.platform.name.qqshuqian=QQ书签
+buzzinate.platform.name.9dian=豆瓣9点
+buzzinate.platform.name.sinavivi=新浪Vivi
+buzzinate.platform.name.baiducang=百度收藏
+buzzinate.platform.name.bgoogle=Google书签
+buzzinate.platform.name.byahoo=Yahoo收藏
+buzzinate.platform.name.digbuzz=我挖网
+buzzinate.platform.name.poco=Poco网
+buzzinate.platform.name.xianguo=鲜果网
+buzzinate.platform.name.shouker=收客网
+buzzinate.platform.name.wordpress=Wordpress
+buzzinate.platform.name.sohubai=搜狐白社会
+buzzinate.platform.name.365key=天天网摘
+buzzinate.platform.name.livespace=MS Livespace
+buzzinate.platform.name.favorite=收藏夹
+buzzinate.platform.name.digu=嘀咕网
+buzzinate.platform.name.hemidemi=黑米书签
+buzzinate.platform.name.huotu=火兔网
+buzzinate.platform.name.linkedin=LinkedIn
+buzzinate.platform.name.reddit=Reddit
+buzzinate.platform.name.sinaminiblog=新浪微博
+buzzinate.platform.name.stumbleupon=StumbleUpon
+buzzinate.platform.name.zhuaxia=抓虾网
+buzzinate.platform.name.twitter=Twitter
+buzzinate.platform.name.mister-wong=Mister Wong
+buzzinate.platform.name.mywebyahoo=Yahoo MyWeb
+buzzinate.platform.name.9fav=就喜欢网
+buzzinate.platform.name.115=115收藏夹
+buzzinate.platform.name.myshare=MyShare
+buzzinate.platform.name.funp=funP推推王
+buzzinate.platform.name.plurk=噗浪网
+buzzinate.platform.name.lanoo=蓝弩网
+buzzinate.platform.name.digg=掘客网
+buzzinate.platform.name.email=电子邮件
+buzzinate.platform.name.gmail=Gmail
+buzzinate.platform.name.blogbus=博客大巴
+buzzinate.platform.name.chinabyte=比特邦
+buzzinate.platform.name.greader=Google阅读器
+buzzinate.platform.name.follow5=Follow5
+buzzinate.platform.name.zuosa=做啥网
+buzzinate.platform.name.renjian=人间网
+buzzinate.platform.name.fwisp=Fwisp
+buzzinate.platform.name.bsharebox=bShare
+buzzinate.platform.name.leshou=乐收
+buzzinate.platform.name.ask=Ask.com
+buzzinate.platform.name.phonefavs=Phonefavs
+buzzinate.platform.name.polladium=Polladium
+buzzinate.platform.name.diigo=Diigo
+buzzinate.platform.name.friendfeed=Friend Feed
+buzzinate.platform.name.pingfm=Pingfm
+buzzinate.platform.name.gtranslate=Google翻译
+buzzinate.platform.name.hotyesky=天极网摘
+buzzinate.platform.name.evernote=Evernote
+buzzinate.platform.name.printf=Print Friendly
+buzzinate.platform.name.saveaspdf=保存为PDF
+buzzinate.platform.name.tongxue=同学微博
+buzzinate.platform.name.livefav=Live收藏
+buzzinate.platform.name.others=其他
+buzzinate.platform.name.itieba=i贴吧
+buzzinate.platform.name.blogbaidu=百度博客
+buzzinate.platform.name.blogsina=新浪博客
+buzzinate.platform.name.blog163=网易博客
+buzzinate.platform.name.blogsohu=搜狐博客
+buzzinate.platform.name.gbuzz=Google Buzz
+buzzinate.platform.name.diglog=奇客发现
+buzzinate.platform.name.msn=MSN
+buzzinate.platform.name.taojianghu=淘江湖
+buzzinate.platform.name.baiduhi=百度空间
+buzzinate.platform.name.wealink=若邻网
+buzzinate.platform.name.qzone=QQ空间
+buzzinate.platform.name.chouti=抽屉网
+buzzinate.platform.name.bsharesync=一键通
+buzzinate.platform.name.sohuminiblog=搜狐微博
+buzzinate.platform.name.9911=9911微博客
+buzzinate.platform.name.dig24=递客网
+buzzinate.platform.name.yijee=易集网
+buzzinate.platform.name.cfol=中金微博
+buzzinate.platform.name.139=139社区
+buzzinate.platform.name.clipboard=复制网址
+buzzinate.platform.name.neteasemb=网易微博
+buzzinate.platform.name.qqmb=腾讯微博
+buzzinate.platform.name.ushi=优士网
+buzzinate.platform.name.51=51
+buzzinate.platform.name.baohe=宝盒网
+buzzinate.platform.name.youdao=有道书签
+buzzinate.platform.name.haoei=好诶
+buzzinate.platform.name.tumblr=Tumblr
+buzzinate.platform.name.leihou=雷猴
+buzzinate.platform.name.readitlater=ReadItLater
+buzzinate.platform.name.instapaper=Instapaper
+buzzinate.platform.name.feixin=飞信
+buzzinate.platform.name.tianya=天涯
+buzzinate.platform.name.tianya_video=天涯 (视频)
+buzzinate.platform.name.discuz=Discuz!
+buzzinate.platform.name.qing6=青6
+buzzinate.platform.name.qqxiaoyou=朋友网
+buzzinate.platform.name.cyzone=创业吧
+buzzinate.platform.name.fanfou=饭否
+buzzinate.platform.name.renmaiku=人脉库
+buzzinate.platform.name.51taonan=淘男网
+buzzinate.platform.name.clzg=彩龙微博
+buzzinate.platform.name.nokiakaixin=开心网 (诺基亚)
+buzzinate.platform.name.hexunmb=和讯微博
+buzzinate.platform.name.ifensi=粉丝网
+buzzinate.platform.name.ifengmb=凤凰微博
+buzzinate.platform.name.loo365=站长微博
+buzzinate.platform.name.ganniu=赶牛微博
+buzzinate.platform.name.dream=梦幻人生
+buzzinate.platform.name.mplife=名品微博
+buzzinate.platform.name.masar=玛撒网
+buzzinate.platform.name.shouji=手机
+buzzinate.platform.name.139mail=139邮箱
+buzzinate.platform.name.moptk=猫扑推客
+buzzinate.platform.name.waakee=挖客
+buzzinate.platform.name.woshao=我烧网
+buzzinate.platform.name.chinanews=中新网
+buzzinate.platform.name.peoplemb=人民微博
+buzzinate.platform.name.hudee=蝴蝶
+buzzinate.platform.name.gmw=光明网
+buzzinate.platform.name.zhuanming=专名微博
+buzzinate.platform.name.mala=麻辣微博
+buzzinate.platform.name.szone=守株网
+buzzinate.platform.name.tuita=推他
+buzzinate.platform.name.xiaomeisns=校媒采通
+buzzinate.platform.name.cyolbbs=中青论坛
+buzzinate.platform.name.xyweibo=微博校园
+buzzinate.platform.name.zjol=浙江微博
+buzzinate.platform.name.42qu=42区
+buzzinate.platform.name.caimi=财迷
+buzzinate.platform.name.markzhi=mark之
+# joinwish website platform
+buzzinate.platform.name.joinwish=好愿网
+buzzinate.platform.name.vocmb=湖南微博
+buzzinate.platform.name.southmb=南方微博
+buzzinate.platform.name.meilishuo=美丽说
+buzzinate.platform.name.huaban=花瓣
+buzzinate.platform.name.taobao=淘宝
+buzzinate.platform.name.mogujie=蘑菇街
+buzzinate.platform.name.ifengkb=凤凰快博
+buzzinate.platform.name.laodao=唠叨网
+buzzinate.platform.name.yaolanmb=摇篮微博
+buzzinate.platform.name.duitang=堆糖
+buzzinate.platform.name.printer=打印
+buzzinate.platform.name.pinterest=Pinterest
+buzzinate.platform.name.miliao=米聊
+buzzinate.platform.name.sinaqing=新浪轻博客
+buzzinate.platform.name.xinminmb=新民微博
+buzzinate.platform.name.eastdaymb=东方微博
+buzzinate.platform.name.redmb=红微博
+
+buzzinate.platform.name.deprecated=平台不支持
+buzzinate.platform.name.unknown=未知平台
+buzzinate.platform.name.all=全部
+
+
+#info
+bshare.icp=沪ICP备09026724号
+terms.and.conditions.body.top=使用本服务之用户知悉以下条款，
+terms.and.conditions.body1=用户遵守中华人民共和国相关法律法规，包括但不限于《中华 人民共和国计算机信息系统安全保护条例》、《计算机软件保护条例》、《最高人民法院关于审理涉及计算机网络著作权纠纷案件适用法律若干问题的解释(法释 [2004]1号)》、《全国人大常委会关于维护互联网安全的决定》、《互联网电子公告服务管理规定》、《互联网新闻信息服务管理规定》、《互联网著作权 行政保护办法》和《信息网络传播权保护条例》等有关计算机互联网规定和知识产权的法律和法规、实施办法。
+terms.and.conditions.body2=不得利用本服务危害国家安全、泄露国家秘密，不得侵犯国家社会集体的和公民的合法权益，不得利用本服务制作、复制、查阅和传播下列信息： <div class="clear spacer3"></div>(1)&nbsp;违反宪法确定的基本原则的；<div class="clear spacer3"></div>(2)&nbsp;危害国家安全，泄漏国家机密，颠覆国家政权，破坏国家统一的；<div class="clear spacer3"></div>(3)&nbsp;损害国家荣誉和利益的； <div class="clear spacer3"></div>(4)&nbsp;煽动民族仇恨、民族歧视，破坏民族团结的；<div class="clear spacer3"></div>(5)&nbsp;破坏国家宗教政策，宣扬邪教和封建迷信的；<div class="clear spacer3"></div>(6)&nbsp;散布谣言，扰乱社会秩序，破坏社会稳定的；<div class="clear spacer3"></div>(7)&nbsp;散布淫秽、色情、赌博、暴力、恐怖或者教唆犯罪的；<div class="clear spacer3"></div>(8)&nbsp;侮辱或者诽谤他人，侵害他人合法权益的；<div class="clear spacer3"></div>(9)&nbsp;煽动非法集会、结社、游行、示威、聚众扰乱社会秩序的；<div class="clear spacer3"></div>(10)&nbsp;以非法民间组织名义活动的；<div class="clear spacer3"></div>(11)&nbsp;含有法律、行政法规禁止的其它内容的。
+terms.and.conditions.body3=使用本服务之用户，同意本公司搜集分享及转贴之统计信息，本公司承诺不公布涉及隐私之注册资料，但下列情况除外：<div class="clear spacer3"></div>(1)&nbsp;事先获得用户的明确授权；<div class="clear spacer3"></div>(2)&nbsp;根据有关的法律法规要求；<div class="clear spacer3"></div>(3)&nbsp;按照相关政府主管部门的要求；<div class="clear spacer3"></div>(4)&nbsp;为维护社会公众的利益。
+terms.and.conditions.body4=有关版权议题，本服务仅负责出示原出处之联结，如原内容或转载内容触及版权侵犯，本服务不负责任。
+terms.and.conditions.body5=用户同意互相尊重，对自己的言论和行为负责。<div class="clear spacer3"></div>(1)&nbsp;发布信息时必须遵守中华人民共和国的各项有关法律法规，遵守网上一般道德及规范；<div class="clear spacer3"></div>(2)&nbsp;承担一切因不当行为而直接或间接导致的民事或刑事法律责任,所产生的不良后果与本服务无关；<div class="clear spacer3"></div>(3)&nbsp;不干扰或扰乱网络服务。
+terms.and.conditions.body6=本服务有权对于严重损害用户权益（包括但不限于，分享次数超越平台及用户可接受范围、分享内容遭用户反映为垃圾讯息或分享讯息与原内容差异过大等）、公共权益或乙方利益的内容，乙方有权终止对该网站或用户进行服务，并支持协助互联网有关行政机关等进行追索和查处。
+terms.and.conditions.body7=本服务可随时根据实际情况中断服务，无需对任何个人或第三方负责而随时中断服务。
+terms.and.conditions.body8=本服务保留最终解释权。
+terms.and.conditions.last.updated=最新更新: 2012年7月20日
+bshare.privacy.title1=隐私条款
+bshare.privacy.body1=欢迎莅临擘纳(上海)信息科技股份有限公司的企业网站。擘纳(上海)信息科技股份有限公司是「<a title="bShare 微积分系统" class="bLinkBlue" href="http://points.bshare.cn" target="_blank">bShare 微积分系统</a>」的母集团。<br/><br/>我们非常重视我们的隐私权，更相信您也同样维护您的隐私。在此隐私条款中，我们将解释我们如何搜集，使用您的信息。为保护您的权益，请详细阅读此隐私条款。若有疑问，请随时与我们联系。<br/><br/>在您使用我们的服务时，必须同意此使用及隐私条款。我们可能对本隐私政策不时进行修改。如果我们进行任何修改，我们将在<a title="buzzinate.com" class="bLinkBlue" href="http://www.buzzinate.com" target="_blank">buzzinate.com</a>的主页上发布通知以使用户知道被修改内容的类型以及指示用户审阅更新的隐私政策。如果您在对本隐私政策任何细微修改发布后继续使用网站，则表示您同意遵守任何该等修改。
+bshare.privacy.title2=简而言之，我们的隐私承诺如下:
+bshare.privacy.body2.1=您的隐私由您掌控。
+bshare.privacy.body2.2=我们仅依照下列的条款中订定的方式截取或使用您的个人信息。
+bshare.privacy.body2.3=为方便您是用我们的服务或特定功能，我们将向您要求部分个人信息。
+bshare.privacy.body2.4=我们决不会在未经同意下，将您的个人信息向第三方透露。当地法律要求例外。
+bshare.privacy.body2.5=您可以随时取消您的使用账号。
+bshare.privacy.title3=我们截取您什么信息？
+bshare.privacy.body3=在使用我们的网站或服务的过程中，我们可能获取各种不同的信息、数据。<br/><br/>当您注册使用我们的服务时，我们也将要求您提供您的个人信息，包括但不限于用户名称及电子邮箱地址。
+bshare.privacy.title4=bShare网站站长用户
+bshare.privacy.body4=为让bShare服务在您的网站上操作正常，当您首次注册使用我们的服务时，我们会要求您提供部分个人信息，包含用户名称、密码及电子邮箱地址。尔后，我们也将不定期要求您提供其他个人信息。提供这些信息并非绝对必要，但如不提供则可能无法使用部分功能与服务。<br/><br/>身为bShare的站长用户，您的个人信息主要用于容许我们追踪数据并提供数据分析给您，并提供实事的更新讯息给您。
+bshare.privacy.title5=bShare用户
+bshare.privacy.body5=如果您是一般用户，仍可能需要注册以便使用我们的服务。注册信息包括但不限于用户名、密码、电子邮箱，以及其他您所愿意提供的相关信息。另外，您使用的特定分享服务，如电子邮件分享模式，也将需要您提供个人的电子邮箱地址，以及收件人的电子邮箱地址。如果您选择使用bShare同步分享服务，则可能需要提供各个欲同步的平台帐号及密码，以便使用此服务。<br/><br/>除了个人信息以外，我们也可能获取其他的信息。这些信息不记名，也无法追踪到您个人信息。我们可能将此类信息提供给第三方。这些不记名的信息一般包括不记名的使用行为、数据，例如：用户总数、浏览器种类、分享内容。我们也可能将获取您的IP地址，以便我们分析、处理服务器的问题以及运营我们的服务。
+bshare.privacy.title6=使用数据
+bshare.privacy.body6=“使用数据”指您电脑浏览器所传送的信息，包括但不限于电脑的IP地址、转移的HTTP地址、目前的HTTP地址、使用时间以及其他数据。<br/><br/>当您是用我们的服务时，我们的服务器将自动获取并记录您的服务器所传送的信息。我们将使用此信息监督并分析以便我们进行技术上的维护及监督，并更了解如何为我们的用户提供更优质的服务。<br/><br/>在您透过我们的服务造访第三方网站的同时，我们也将获取使用数据。我们将分析各个不同网站的使用数据以便用户可以在我们的网站与服务上获取更大的便利性与整合性。这些整合的数据，也将可能被作为广告投放的依据，以将更适合您的广告、促销信息提供给您。<br/><br/>我们将不会将使用数据与您的个人信息作整合，造成您被辨别的风险提升。当您透过我们的电子邮件分享服务转寄内容时，您的信息将被储存在您的电脑浏览器中，而并非我们的服务器之中。我们不会在未经您的许可下，擅自储存您的个人登入信息。我们也向我们的合作第三方网站提倡使用合适的隐私权条款，以保护我们的用户的隐私权。
+bshare.privacy.title7=未成年使用者
+bshare.privacy.body7=任何bShare的使用者将被默认为13岁以上的自然人。因此，除非另有注明该用户为13岁以下者，均以成年人处理。
+bshare.privacy.title8=Cookies
+bshare.privacy.body8=今时今日，大部分的网站都在一定程度上使用了Cookies。我们自然也不例外。我们使用Cookies来存储您的登入信息，以简化您的登入流程。我们也有可能透过Cookies的方式，了解您如何使用我们的服务。第三方的广告商，也有可能在适当的情况下植入Cookies。您可以到浏览器上设置拒绝Cookies。
+bshare.privacy.title9=我们如何使用所获取的信息
+bshare.privacy.body9=我们决不允许第三方使用您所提供的个人信息，包括电子邮箱地址，进行广告或招商的活动。<br/><br/>使用数据部分，我们可能因以下情况使用：
+bshare.privacy.body9.1=按照您所选择的服务项目使用，包括但不限于数据追踪以及自定义功能
+bshare.privacy.body9.2=为您提供更优质、便利的服务
+bshare.privacy.body9.3=提供针对您量身订制的内容、信息、服务
+bshare.privacy.body9.4=回应您的意见及反馈
+bshare.privacy.body9.5=完成您对我们的商品及服务的要求
+bshare.privacy.body9.sub1=我们也可能使用您的不记名信息，如IP地址，进行统计分析并定制我们的网站、商品及服务。<br/><br/>我们也可能与第三方，包括但不限于支援我们服务的其他服务提供商、以及广告投放相关的厂商，共享不记名信息，包括但不限于以下的项目：
+bshare.privacy.body9.6=我们网站的使用信息
+bshare.privacy.body9.7=经过分析汇整的统计数据
+bshare.privacy.body9.8=使用行为、流量及人口统计
+bshare.privacy.body9.sub2=您在我们的网站以及服务所公开提交的评论、分享、以及用户名，视为公开信息。bShare保留重置、使用、公开及传播此公开信息的权利。请注意，若您自愿提供此讯息，则亦有可能由他人使用及收集。例如，如果您在我们的博客上进行发言，并且公开留下了联系方式，则可能收到他人所传递的广告信息。bShare将无法控制您在此公开领域中发布的个人信息。您可依照您对个人信息的公开程度，选择性公布您的个人信息。
+bshare.privacy.title10=第三方服务商
+bshare.privacy.body10=我们可能与第三方的服务上进行合作，以便提供更多的服务给我们的用户。这些第三方服务商将可能代表我们提供服务，并执行网站的维、托管、数据库管理等服务。这些第三方仅在执行此类业务时，有权使用您的个人信息，并同时保持与我们同样的隐私权承诺。
+bshare.privacy.title11=遵从法律
+bshare.privacy.body11=bShare必须与政府及执法单位进行配合，以确保无违法行为的进行。在此情况下，我们将视情况与执法单位配合，提供个人信息以及使用信息，以确保bShare或第三方的权利保障、保护公众或任何人的安危、或防止任何我们认为造成违法的可能之行为。
+bshare.privacy.title12=商业转移
+bshare.privacy.body12=bShare可能因转售、转移或其他原因，售出部分或全部的资产，包括您的个人信息及使用信息，以完成并购、收购、组织重整、甚至破产所导致的资产变卖。如果收购方的使用条款及隐私权声明不符合您的标准，您将保留退出或取消帐户的权利。
+bshare.privacy.title13=第三方链结
+bshare.privacy.body13=我们的网站包含其他网站的连结。我们不对其他网站上的隐私政策和/或其执行承担责任。当链接到其他网站时，用户应该阅读该网站贴示的隐私政策。我们所提供的第三方网站的连结不代表我们对该网站的代言也不代表我们与该网站的联盟关系，以不代表我们与其隐私条款的相关联结。这些第三方网站有可能在您的计算机上安装第三方软件，或像您索取个人信息。我们的隐私政策仅适用于Buzzinate.com的信息。即便您或许已熟悉了我们的隐私条款，我们仍建议您参考该网站所贴式的隐私政策。
+bshare.privacy.title14=我们对信息安全性的承诺
+bshare.privacy.body14=请注意，尽管我们极力提供一个安全的服务架构，我们也意识到没有任何的安全机制是完全无懈可击的。我们将不为任何信息（个人以及非个人）的盗窃负责。同时，身为我们的用户，您也必须为您的个人安全性小心谨慎，以确保您的密码及其他个人信息不被盗窃。我们亦不为任何盗窃相关的违法使用、侵入、或信息外泄负责。<br/><br/>在您使用我们的服务时，必须同意此使用及隐私条款。我们可能对本隐私政策不时进行修改。如果我们进行任何修改，我们将在buzzinate.com的主页上发布通知以使用户知道被修改内容的类型以及指示用户审阅更新的隐私政策。如果您在对本隐私政策任何细微修改发布后继续使用网站，则表示您同意遵守任何该等修改。<br/><br/>如果您对我们的隐私条款有任何的疑问，请随时与我们联系: <a title="feedback@bshare.cn" href="mailto:feedback@bshare.cn" target="_blank" class="bLinkBlue">feedback@bshare.cn</a>
+bshare.privacy.last.updated=更新时间：2012年7月20日
+
+
+#OFC
+bshare.ofc.label.views=浏览
+bshare.ofc.label.clicks=点击
+bshare.ofc.label.shares=分享
+bshare.ofc.label.clickbacks=回流
+bshare.ofc.label.conversions=转化率
+bshare.ofc.label.activity=活动
+
+##shop##
+bshare.shop.product.nonentity = 商品部存在或者已下架，请重新选择。
+bshare.shop.product.condition = 兑换条件
+bshare.shop.product.category.all = 所有类别
+bshare.shop.activity.nonentity = 活动不存在或者尚未开始，请重新选择。
+bshare.shop.activity.extrainfo= 本次活动的最终解释权归<a href="{0}" class="bLinkBlue" target="_blank">{1}</a>所有
+bshare.shop.order.illegalparameter = 当前订单非法，请重试。
+bshare.shop.order.illegalproduct = 商品已下架，请重试。
+bshare.shop.order.illegaluser = 登录以后以后才能兑换商品
+bshare.shop.order.pointsnotenough = 当前商品需要<span class="text-blue keyword">{0}</span>微积分，你当前拥有<span class="text-blue keyword">{1}</span>微积分，可以参加以下活动，获取微积分
+bshare.shop.order.ordersuccess = 兑换成功，你已经将<span class="text-blue keyword">{0}</span>微积分兑换成<span class="text-blue keyword">{1}</span>商品。
+bshare.shop.order.illegalsystem = 当前兑换不合法，请联系管理员。
+bshare.shop.order.noproduct = 该商品已经售光。
+bshare.shop.order.confirm = 兑换记录确认
+bshare.shop.order.confirm.detail = 兑换详细信息
+bshare.shop.order.confirm.product = 商品信息
+bshare.shop.order.confirm.points = 微积分信息
+bshare.shop.order.confirm.contact = 联系信息
+bshare.shop.order.confirm.points.productnum = 兑换商品数目
+bshare.shop.order.confirm.points.orderpoints= 兑换所需微积分
+bshare.shop.order.confirm.points.userpoints = 账户微积分
+bshare.shop.order.confirm.points.endpoints = 兑换后账户剩余微积分
+bshare.shop.order.confirm.button = 提交兑换
+bshare.shop.pointsorder.nouseraccount = 账户信息必须填写 
+bshare.shop.product.more = 更多
+bshare.shop.activity.date.mid = 至 
+bshare.shop.order.contactinfo = 请填写联系信息,或者联系信息不合法（联系信息只能包括字母 数字，中文，逗号 ，中划线，句号），请重新填写
+bshare.shop.exception.product.title=商品
+bshare.shop.exception.product.error= 商品不存在
+bshare.shop.exception.productCategory.title=商品类别
+bshare.shop.exception.productCategory.error= 商品类别不存在
+bshare.shop.exception.direct =直接跳转
+bshare.shop.exception.activity.title=活动
+bshare.shop.exception.activity.error= 活动不存在，或者活动还没有开始.
+bshare.shop.exception.time = 系统将在<span id="time" class="text-blue keyword">5</span>秒后跳转。
+bshare.shop.exception.unauthorized.title =权限
+bshare.shop.exception.unauthorized.error =您无权限浏览此页面！
+bshare.shop.exception.order.title= 订单
+bshare.shop.title = 微积分
+bshare.shop.points.errorinfo=你的微积分不足，可以参加以下活动，获取微积分
+##order status##
+bshare.shop.order.orderstatus0=全部
+bshare.shop.order.orderstatus1=已下单
+bshare.shop.order.orderstatus2=待发货
+bshare.shop.order.orderstatus3=待到货
+bshare.shop.order.orderstatus4=已完成
+bshare.shop.order.orderstatus5=已删除
+
+##order points##
+bshare.shop.order.points.info=兑换信息确认
+bshare.shop.order.points.rate=兑换比例
+bshare.shop.order.points.using=可用微积分
+bshare.shop.order.points.ratemessage = <span class="text-blue">{0}</span>个微积分=1个{1}
+bshare.shop.order.points.num = 兑换微积分
+bshare.shop.order.points.otherPoints = 获得{0}
+bshare.shop.order.points.accountName={0}账号
+bshare.shop.order.points.points = 请确认您填写的{0}账号，还没有{1}账号?点击<a class="bLinkBlue" href="https://memberprod.alipay.com/account/reg/index.htm" target="_blank">注册</a>
+bshare.shop.order.points.points.exchange.user_no_exists = {0}账号不存在，请核对后再兑换。
+bshare.shop.order.points.pointsaccount = 请输入您的{0}账号
+bshare.shop.order.points.points.num = 兑换积分数应该大于0
+bshare.shop.order.points.points.info= 什么是{0}
+
+##olympic##
+bshare.task.olympic.name.detail=奥运会活动
+bshare.task.olympic.time.start=2012/07/27
+bshare.task.olympic.time.end=2012/08/12
+bshare.task.olympic.award.detail=2012
+bshare.task.olympic.publisher.detail= bshare官方
+bshare.task.olympic.task.detail = 这里是奥运活动说明
+
+
+bshare.create.invalid.image.file=无效的图片文件。
+bshare.create.upload.fail=上传失败！
+bshare.create.image.too.large=图片大小超出允许。
+
+global.format.money = {0,number,##,##0.00}
+global.format.percentage = {0,number,#.##%; #.##%}
+
+
+# alipay quick login
+bshare.alipay.quicklogin=快捷登陆
+bshare.alipay.quicklogin.fail=快捷登陆失败，请重新登陆
+

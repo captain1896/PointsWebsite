@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.OrderLottery" table="points_order_lottery">
+		<id name="id" column="id">
+		   <generator class="native" />
+		</id>
+		<property name="orderId" >
+			<column name="order_id" />
+		</property>
+		<property name="productId" >
+			<column name="product_id" />
+		</property>
+		<property name="lotteryNo" >
+			<column name="lottery_no" />
+		</property>
+	</class>
+	<sql-query name="OrderLottery.orderLotteryNo">
+	    update points_order_lottery t set t.order_id=:orderId 
+	    where t.id = (select a.id from(select ifNull(max(t2.id),0) id from points_order_lottery t2 where t2.order_id is null and t2.product_id=:productId limit 1) a)
+	</sql-query>
+ </hibernate-mapping>

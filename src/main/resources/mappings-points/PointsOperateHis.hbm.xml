@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.PointsOperateHis" table="points_operate_his">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="pointsModule" column="module_name" >
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.PointsStatModule</param>
+			</type>
+		</property>
+		<property name="operateType" column="operate_type" >
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.OperateType</param>
+			</type>
+		</property>
+		<property name="recordId" >
+			<column name="table_id" />
+		</property>
+		<property name="userId" >
+			<column name="user_id" />
+		</property>
+		<property name="insertTime" >
+			<column name="insert_time" />
+		</property>
+	</class>
+ </hibernate-mapping>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.Order" table="points_order">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="orderNo" >
+			<column name="order_no" />
+		</property>
+		<property name="productId" >
+			<column name="product_id" />
+		</property>
+		<property name="userId" >
+			<column name="user_id" />
+		</property>
+		<property name="contactName" >
+			<column name="contact_name" />
+		</property>
+		<property name="contactAddress" >
+			<column name="contact_address" />
+		</property>
+		<property name="contactNo" >
+			<column name="contact_no" />
+		</property>
+		<property name="zipCode" >
+			<column name="zip_code" />
+		</property>
+		<property name="orderPoints" >
+			<column name="order_points" />
+		</property>
+		<property name="prodNum" >
+			<column name="prod_num" />
+		</property>
+		<property name="orderTime" >
+			<column name="order_time" />
+		</property>
+		<property name="orderStatus" column="order_status">
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.OrderStatus</param>
+			</type>
+		</property>
+		<property name="otherInfo" >
+			<column name="other_info" />
+		</property>
+		<property name="outPointsTradNo" >
+			<column name="out_tradno" />
+		</property>
+	</class>
+	<query name="Order.getOrders">
+        from Order s where (s.orderStatus=:orderStatus or :orderStatus=0) and s.prodNum>0 order by s.orderStatus, s.orderTime desc
+    </query>
+    <query name="Order.getCountOrders">
+        select count(*) from Order s where (s.orderStatus=:orderStatus or :orderStatus=0) and s.prodNum>0
+    </query>
+    <query name="Order.getOrdersByUserIdPagination">
+        from Order s where s.userId=:userId and s.prodNum>0 order by s.orderTime desc
+    </query>
+    <query name="Order.getOrdersByUserIdCount">
+       select count(*)  from Order s where s.userId=:userId
+    </query>
+    <query name="Order.getOrdersByProductId">
+        from Order s where s.productId=:productId order by s.orderTime desc
+    </query>
+    <query name="Order.updateStatus">
+         update Order o set o.orderStatus = :orderStatus where o.id = :id
+    </query>
+    <sql-query name="order.updateLotteryNo">
+         update points_order o set o.other_info =(select l.lottery_no from points_order_lottery l where l.order_id=:orderId) where o.id = :orderId
+    </sql-query>
+    <sql-query name="order.updateUserId">
+         update points_order o set o.user_id = :targetId where o.user_id = :sourceId
+    </sql-query>
+ </hibernate-mapping>

@@ -1,0 +1,125 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="admin" namespace="/admin" extends="default">
+        
+        <action name="activeSites" class="uuidSiteStatisticsAction">
+            <result name="success">/jsp/admin/ActiveSites.jsp</result>
+            <result name="input">/jsp/admin/ActiveSites.jsp</result>
+            <result name="error">/jsp/admin/ActiveSites.jsp</result>
+        </action>
+        <action name="dailyStats" class="dailyStatisticsAction">
+            <result name="success">/jsp/admin/DailyStats.jsp</result>
+            <result name="input">/jsp/admin/DailyStats.jsp</result>
+            <result name="error">/jsp/admin/DailyStats.jsp</result>
+        </action>
+        <action name="platformStats" class="platformStatisticsAction">
+            <result name="success">/jsp/admin/PlatformStats.jsp</result>
+            <result name="input">/jsp/admin/PlatformStats.jsp</result>
+            <result name="error">/jsp/admin/PlatformStats.jsp</result>
+        </action>
+
+        <action name="deposit">
+            <result name="success">/jsp/admin/Deposit.jsp</result>
+            <result name="input">/jsp/admin/Deposit.jsp</result>
+            <result name="error">/jsp/admin/Deposit.jsp</result>
+        </action>
+        <action name="topup" class="adminAction" method="topup">
+            <result name="success" type="redirect">/admin/deposit</result>
+            <result name="input">/jsp/admin/Deposit.jsp</result>
+            <result name="error">/jsp/admin/Deposit.jsp</result>
+        </action>
+        <action name="publisher" class="publisherManageAction">
+            <result name="success">/jsp/admin/Publisher.jsp</result>
+            <result name="input">/jsp/admin/Publisher.jsp</result>
+            <result name="error">/jsp/admin/Publisher.jsp</result>
+        </action>
+        <action name="addPublisher">
+            <result name="success">/jsp/admin/AddPublisher.jsp</result>
+        </action>
+        <action name="createPublisher" class="publisherManageAction" method="create">
+            <result type="redirect" name="success">publisher</result>
+            <result name="input">/jsp/admin/AddPublisher.jsp</result>
+            <result name="error">/jsp/admin/AddPublisher.jsp</result>
+        </action>
+        <action name="deletePublisher/{id}" class="publisherManageAction" method="delete">
+            <result type="redirect" name="success">publisher</result>
+            <result type="redirect" name="error">publisher</result>
+        </action>
+        <action name="merchant" class="merchantManageAction">
+            <result name="success">/jsp/admin/Merchant.jsp</result>
+            <result name="input">/jsp/admin/Merchant.jsp</result>
+            <result name="error">/jsp/admin/Merchant.jsp</result>
+        </action>
+        <action name="addMerchant">
+            <result name="success">/jsp/admin/AddMerchant.jsp</result>
+        </action>
+        <action name="editMerchant/{id}" class="merchantManageAction" method="edit">
+            <result name="success">/jsp/admin/EditMerchant.jsp</result>
+        </action>        
+        <action name="createMerchant" class="merchantManageAction" method="create">
+            <result type="redirect" name="success">merchant</result>
+            <result name="input">/jsp/admin/AddMerchant.jsp</result>
+            <result name="error">/jsp/admin/AddMerchant.jsp</result>
+        </action>
+        <action name="updateMerchant" class="merchantManageAction" method="update">
+            <result type="redirect" name="success">merchant</result>
+            <result name="input">/jsp/admin/EditMerchant.jsp</result>
+            <result name="error">/jsp/admin/EditMerchant.jsp</result>
+        </action>
+        <action name="deleteMerchant/{id}" class="merchantManageAction" method="delete">
+            <result type="redirect" name="success">merchant</result>
+            <result type="redirect" name="error">merchant</result>
+        </action>
+        <action name="product" class="productManageAction">
+            <result name="success">/jsp/admin/Product.jsp</result>
+            <result name="input">/jsp/admin/Product.jsp</result>
+            <result name="error">/jsp/admin/Product.jsp</result>
+        </action>
+        <action name="addProduct" class="productManageAction" method="add">
+            <result name="success">/jsp/admin/AddProduct.jsp</result>
+        </action>
+        <action name="editProduct/{id}" class="productManageAction" method="edit">
+            <result name="success">/jsp/admin/EditProduct.jsp</result>
+        </action>        
+        <action name="createProduct" class="productManageAction" method="create">
+            <result type="redirect" name="success">product</result>
+            <result name="error">/jsp/admin/AddProduct.jsp</result>
+        </action>
+        <action name="updateProduct" class="productManageAction" method="update">
+            <result type="redirect" name="success">product</result>
+            <result name="input">/jsp/admin/EditProduct.jsp</result>
+            <result name="error">/jsp/admin/EditProduct.jsp</result>
+        </action>
+        <action name="deleteProduct/{id}" class="productManageAction" method="delete">
+            <result type="redirect" name="success">product</result>
+            <result type="redirect" name="error">product</result>
+        </action>
+        <action name="orders" class="adminOrderAction" method="orders">
+            <result>/jsp/admin/AdminOrders.jsp</result>
+            <result name="error">/jsp/common/exceptionHandler.jsp</result>
+        </action>
+        <action name="updateOrder" class="adminOrderAction" method="updateOrders">
+            <result type="redirect" name="success">orders?orderStatus=${orderStatus}</result>
+            <result name="error">/jsp/common/exceptionHandler.jsp</result>
+        </action>
+        <action name="deleteProduct2/{id}" class="productManageAction" method="deleteDemo" >
+        	<result type= "redirect" name="success">product</result>
+        	<result type="redirect" name="error">/jsp/common/Error.jsp</result>
+        </action>
+        <action name="addProduct2" class="productManageAction" method="addDemo">
+        	<result name="success">/jsp/admin/AddProduct.jsp</result>
+        </action>
+        <action name="editProduct2/{id}" class="productManageAction" method="editDemo">
+        	<result name="success">/jsp/admin/EditProduct.jsp</result>
+        </action>
+        <action name="updateProduct2" class="productManageAction" method="updateDemo">
+        	<result type="redirect" name="success">product</result>
+        	<result name="input">/jsp/admin/EditProduct.jsp</result>
+        	<result name="error">/jsp/admin/EditProduct.jsp</result>
+        </action>   
+    </package>
+    
+</struts>

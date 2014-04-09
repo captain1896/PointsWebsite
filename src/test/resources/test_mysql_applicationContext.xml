@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+      http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-autowire="byName">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/bshare_test?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="username" value="buzzinate_w" />
+		<property name="password" value="" />
+
+
+		<property name="initialSize" value="3" />
+		<property name="minIdle" value="3" />
+		<property name="maxIdle" value="5" />
+		<property name="maxActive" value="4" />
+	</bean>
+
+    
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+                <value>classpath:mappings/*.hbm.xml</value>
+                <value>classpath:mappings-core/*.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.connection.pool_size">30</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<!-- Won't work with this...need to find out why -->
+				<prop key="hibernate.current_session_context_class">thread</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED"
+				rollback-for="BaseException,RuntimeException" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:advisor pointcut="execution(* com.buzzinate..service..*(..))"
+			advice-ref="txAdvice" />
+		<aop:advisor pointcut="execution(* com.buzzinate..services..*(..))"
+			advice-ref="txAdvice" />
+	</aop:config>
+
+	<bean id="loggingAdvice" class="com.buzzinate.common.spring.advice.LoggingAdvice" />
+
+	<aop:config>
+		<aop:pointcut id="loggingServices"
+			expression="execution(* com.buzzinate..*(..)) 
+                and !execution(* com.buzzinate..actions..*(..))" />
+
+		<aop:aspect ref="loggingAdvice">
+			<aop:before pointcut-ref="loggingServices" method="before" />
+			<aop:after-returning pointcut-ref="loggingServices"
+				method="afterReturning" />
+			<aop:after-throwing pointcut-ref="loggingServices"
+				throwing="ex" method="afterThrowing" />
+		</aop:aspect>
+	</aop:config>
+
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+</beans>

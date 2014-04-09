@@ -1,0 +1,2 @@
+native2ascii -encoding UTF-8 MessageResources_zh.properties.native MessageResources_zh.properties 
+native2ascii -encoding UTF-8 MessageResources_zh_TW.properties.native MessageResources_zh_TW.properties 

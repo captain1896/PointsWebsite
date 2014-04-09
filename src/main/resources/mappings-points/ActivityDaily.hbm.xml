@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <sql-query name="ActivityDaily.insertOrUpdate">
+        insert into points_activity_daily
+        (activity_id, date, platform_id, uuid, share_count, clickback_count)
+        values
+            (:activityId, :date, :platformId, :uuid, :shareCount, :clickbackCount)
+        on duplicate key update
+            share_count = share_count + :shareCount,
+            clickback_count = clickback_count + :clickbackCount
+    </sql-query>
+	<sql-query name="ActivityDaily.getStatisticByDay">
+        <return-scalar column="day" type="java.util.Date"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.date day, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where r.uuid in (:uuids)
+              and (r.date between :dateStart and :dateEnd) 
+            group by day order by day asc
+    </sql-query>
+    <sql-query name="ActivityDaily.getStatisticByPlatform">
+        <return-scalar column="platform_id" type="int"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.platform_id platform_id, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where r.uuid in (:uuids) 
+              and (r.date between :dateStart and :dateEnd) 
+            group by platform_id order by share_count desc
+    </sql-query>
+    <sql-query name="ActivityDaily.getStatisticByActivityId">
+        <return-scalar column="activity_id" type="int"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.activity_id activity_id, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where r.uuid in (:uuids) 
+              and (r.date between :dateStart and :dateEnd) 
+            group by activity_id order by share_count desc
+    </sql-query>
+    <sql-query name="ActivityDaily.getDailyStatisticByActivityId">
+        <return-scalar column="day" type="java.util.Date"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.date day, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where r.activity_id = :activityId 
+              and (r.date between :dateStart and :dateEnd) 
+            group by day order by day asc
+    </sql-query>
+    <sql-query name="ActivityDaily.getDailyStatisticByActivityIds">
+        <return-scalar column="day" type="java.util.Date"/>
+        <return-scalar column="activity_id" type="int"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.date day, r.activity_id activity_id, sum(r.share_count) share_count, sum(r.clickback_count) clickback_count
+            from points_activity_daily r
+            where r.activity_id in (:ids) 
+              and (r.date between :dateStart and :dateEnd) 
+            group by r.date,r.activity_id
+            order by day asc
+    </sql-query>
+    <sql-query name="ActivityDaily.getPlatformStatisticByActivityId">
+        <return-scalar column="platformId" type="int"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.platform_id platformId, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where r.activity_id = :activityId 
+              and (r.date between :dateStart and :dateEnd) 
+            group by platformId order by share_count desc
+    </sql-query>
+    <sql-query name="ActivityDaily.getPlatformStatisticByUserId">
+        <return-scalar column="platform_id" type="int"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.platform_id platform_id, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where r.uuid in (:uuids) 
+              and (r.date between :dateStart and :dateEnd) 
+            group by platform_id order by share_count desc
+    </sql-query>
+    <sql-query name="ActivityDaily.getDailyStatistic">
+        <return-scalar column="day" type="java.util.Date"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.date day, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r 
+            where r.date between :dateStart and :dateEnd
+            group by r.date
+            order by r.date asc
+    </sql-query>
+    <sql-query name="ActivityDaily.getPlatformStatistic">
+        <return-scalar column="platformId" type="int"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.platform_id platformId, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where r.date between :dateStart and :dateEnd 
+            group by platformId order by share_count desc
+    </sql-query>
+    <sql-query name="ActivityDaily.getActivityStatisticByIds">
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select IFNULL(sum(r.share_count), 0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count
+            from points_activity_daily r
+            where r.uuid = :uuid and (r.date between :dateStart and :dateEnd) 
+    </sql-query>
+    <sql-query name="ActivityDaily.getActivityStatistic">
+        <return-scalar column="uuid" type="binary"/>
+        <return-scalar column="share_count" type="long"/>
+        <return-scalar column="clickback_count" type="long"/>
+            select r.uuid uuid, IFNULL(sum(r.share_count),0) share_count, IFNULL(sum(r.clickback_count),0) clickback_count 
+            from points_activity_daily r
+            where (r.date between :dateStart and :dateEnd) 
+            group by r.uuid order by share_count desc
+    </sql-query>
+    <sql-query name="ActivityDaily.getWebsiteStatSumCount">
+        <return-scalar column="count" type="int"/>
+            select count(DISTINCT(r.uuid)) count 
+            from points_activity_daily r
+            where (r.date between :dateStart and :dateEnd) 
+    </sql-query>
+</hibernate-mapping>

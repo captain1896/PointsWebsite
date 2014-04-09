@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.ProductCategory" table="points_product_category">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="code" >
+			<column name="code" />
+		</property>
+		<property name="parentId" >
+			<column name="parent_id" />
+		</property>
+		<property name="name" >
+			<column name="name" />
+		</property>
+		<property name="nameEn" >
+			<column name="name_en" />
+		</property>
+		<property name="status" column="status" >
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.CategoryStatus</param>
+			</type>
+		</property>
+		<property name="insertTime" >
+			<column name="insert_time" />
+		</property>
+	</class>
+	
+	<query name="productCategory.getAll">
+	   from ProductCategory where status = 1
+	</query>
+ </hibernate-mapping>

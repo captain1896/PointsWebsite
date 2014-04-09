@@ -1,0 +1,192 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<include file="struts-default.xml" />
+
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.action.extension" value=",action"/>
+	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+    <constant name="struts.patternMatcher" value="regex" />
+	
+	<package name="default" extends="struts-default">
+		<result-types>
+			<result-type name="json"
+				class="code.google.struts2jsonresult.JSONResult">
+				<param name="prettyPrint">true</param>
+				<param name="target">results</param>
+				<param name="deepSerialize">true</param>
+				<param name="out.noCache">true</param>
+				<param name="patterns">-*.class</param>
+			</result-type>
+			<result-type name="jsonUpload"
+				class="code.google.struts2jsonresult.JSONResult">
+				<param name="out.contentType">text/html</param>
+				<param name="prettyPrint">true</param>
+				<param name="target">results</param>
+				<param name="deepSerialize">true</param>
+				<param name="out.noCache">true</param>
+				<param name="patterns">-*.class</param>
+			</result-type>
+		</result-types>
+
+		<interceptors>
+			<interceptor name="redirectMessageInterceptor"
+			      class="redirectMessageInterceptor">
+			</interceptor>
+   
+			<interceptor-stack name="bShareDefaultStack">
+				<interceptor-ref name="redirectMessageInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>  
+		</interceptors>
+		
+		<default-interceptor-ref name="bShareDefaultStack"></default-interceptor-ref>
+		
+		<default-action-ref name="notFound"></default-action-ref>
+         
+		<global-results>
+            <result name="login">/jsp/user/Login.jsp</result>
+            <result name="verify">/jsp/user/Verify.jsp</result>
+			<result name="input">/jsp/common/Error.jsp</result>
+			<result name="error">/jsp/common/Error.jsp</result>
+			<result name="errorException" type="chain">exceptionHandler</result>
+		</global-results>
+
+         <!-- comment out for development -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="errorException" />
+        </global-exception-mappings>
+        
+        <action name="notFound">
+	         <result>/jsp/common/Error404.jsp</result>
+	    </action>
+        
+        <action name="exceptionHandler" class="exceptionHandlerAction">
+            <result name="success">/jsp/common/Error.jsp</result>
+        </action>
+        
+        <action name="login">
+            <result name="success">/jsp/user/Login.jsp</result>
+            <result name="input">/jsp/user/Login.jsp</result>
+            <result name="error">/jsp/user/Login.jsp</result>
+        </action>
+        <action name="loginAction" class="loginAction">
+            <result type="redirect" name="dynamicAction">${dynamicAction}</result>
+            <result name="success">/</result>
+            <result name="error">${defaultPage}</result>
+        </action>
+        
+        <action name="registerAction" class="registerAction">
+            <result name="success" type="redirect">/shop</result>
+            <result name="publisher" type="redirect">/apply/publisher</result>
+            <result name="input">${defaultPage}</result>
+            <result name="error">${defaultPage}</result>
+            <result type="redirect" name="dynamicAction">${dynamicAction}</result>
+        </action>
+        
+        <action name="AccessDenied">
+            <result name="success">/jsp/common/AccessDenied.jsp</result>
+        </action>
+        
+        <action name="help">
+            <result name="success">/jsp/help/Index.jsp</result>
+        </action>
+        <action name="help/eService">
+            <result name="success">/jsp/help/eService.jsp</result>
+        </action>
+        <action name="help/pService">
+            <result name="success">/jsp/help/pService.jsp</result>
+        </action>
+        <action name="help/eRule">
+            <result name="success">/jsp/help/eRule.jsp</result>
+        </action>
+        <action name="help/pRule">
+            <result name="success">/jsp/help/pRule.jsp</result>
+        </action>
+        <action name="help/faq">
+            <result name="success">/jsp/help/FAQ.jsp</result>
+        </action>
+    
+        <action name="apply/publisher">
+            <result name="success">/jsp/help/pApply.jsp</result>
+        </action>   
+        
+        <action name="terms">
+            <result name="success">/jsp/info/Terms.jsp</result>
+        </action>
+        <action name="privacy">
+            <result name="success">/jsp/info/Privacy.jsp</result>
+        </action>
+        
+        <action name="saveAsCsvFileAction" class="saveAsCsvFileAction" method="saveAsCsvFile"></action>
+        
+        <action name="order" class="payOrderAction" method="generateOrderInfo">
+            <result name="success">/jsp/payment/Checkout.jsp</result>
+            <result name="error" type="chain"></result>
+        </action>
+        <action name="checkout" class="payOrderAction" method="checkout">
+            <result name="error">/jsp/payment/Checkout.jsp</result>
+            <result type="redirect" name="redirect">${paymentUrl}</result>
+        </action>
+        <action name="returnURL" class="payOrderAction" method="returnURL">
+            <result type="redirectAction" name="success">publisher/userDashboard</result>
+        </action>
+        <action name="notifyURL" class="payOrderAction" method="notifyURL">
+            <result name="success">/jsp/payment/NotifyURL.jsp</result>
+        </action>
+        <action name="casFail">
+            <result>casfailed.jsp</result>
+        </action>
+        <action name="shop" class="shopAction" method="index">
+             <result name="success">/jsp/shop/shop.jsp</result>
+        </action>
+        
+        <action name="loginCallback">
+            <result name="success">/jsp/common/LoginCallback.jsp</result>
+        </action>
+        <action name="uploadFile" class="uploadFileAction" method="ajaxGetImage">
+            <result type="jsonUpload" name="json"></result>
+        </action>
+        
+        <!-- Events -->
+        <!-- 2012 -->
+        <!-- Olympic -->
+        <action name="events/london2012" class="olympicAction" method="list">
+            <result name="success">/jsp/events/2012/olympic/index.jsp</result>
+        </action>
+        <!-- Qixi -->
+        <action name="events/qixi2012">
+            <result name="success">/jsp/events/2012/qixi/index.jsp</result>
+        </action>
+        <action name="intro/qixi2012">
+            <result name="success">/jsp/events/2012/qixi/Intro.jsp</result>
+        </action>
+        <!-- V5 -->
+        <action name="events/2012/v5/2b">
+            <result name="success">/jsp/events/2012/v5/ToB.jsp</result>
+        </action>
+        <action name="events/2012/v5/2c">
+            <result name="success">/jsp/events/2012/v5/ToC.jsp</result>
+        </action>
+        <action name="events/2012/v5/intro">
+            <result name="success">/jsp/events/2012/v5/Intro.jsp</result>
+        </action>
+        <action name="events/2012/v5/download">
+            <result name="success">/jsp/events/2012/v5/Download.jsp</result>
+        </action>
+        <action name="events/2012/v5/rank" class="specialTaskAction" method="activityRankV5">
+            <result name="success">/jsp/events/2012/v5/Rank.jsp</result>
+        </action>
+        
+	</package>
+	
+    <include file="admin.xml"></include>   
+    <include file="publisher.xml"></include>
+    <include file="user.xml"></include>
+    <include file="shop.xml"></include>
+    <include file="lucasAdmin.xml"></include>
+</struts>

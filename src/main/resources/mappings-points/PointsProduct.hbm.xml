@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.PointsProduct" table="points_product">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="name" >
+			<column name="name" />
+		</property>
+		<property name="desc" >
+			<column name="descp" />
+		</property>
+		<property name="descUrl" >
+			<column name="desc_url" />
+		</property>
+		<property name="prodCate" >
+			<column name="prod_cate" />
+		</property>
+		<property name="pic" >
+			<column name="pic" />
+		</property>
+		<property name="brand" >
+			<column name="brand" />
+		</property>
+		<property name="tags" >
+			<column name="tags" />
+		</property>
+		<property name="priceMarket" >
+			<column name="price_m" />
+		</property>
+		<property name="initialPoints" >
+			<column name="initial_points" />
+		</property>
+		<property name="currentPoints" >
+			<column name="current_points" />
+		</property>
+		<property name="merchantId" >
+			<column name="merchant_id" />
+		</property>
+		<property name="storeNum" >
+			<column name="store_num" />
+		</property>
+		<property name="sellNum" >
+			<column name="sell_num" />
+		</property>
+		<property name="insertTime" >
+			<column name="insert_time" />
+		</property>
+		<property name="expireDate" >
+			<column name="expire_date" />
+		</property>
+		<property name="productStatus" column="status" >
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.ProductStatus</param>
+			</type>
+		</property>
+		<property name="auditBy" >
+			<column name="AUDIT_BY" />
+		</property>
+		<property name="auditTime" >
+			<column name="AUDIT_TIME" />
+		</property>
+		<property name="updateTime" >
+			<column name="UPDATE_TIME" />
+		</property>
+	</class>
+	<query name="PointsProduct.getProductsOnSale">
+        <![CDATA[from PointsProduct pp where pp.productStatus in (1,3) and (pp.expireDate is null or pp.expireDate > now()) order by pp.productStatus desc,pp.insertTime desc,pp.sellNum desc]]>
+    </query>
+    <query name="PointsProduct.getAll">
+        from PointsProduct order by id desc
+    </query>
+    <query name="PointsProduct.updateSellNum">
+        update PointsProduct pp set pp.sellNum = pp.sellNum + :sells,pp.productStatus=(case when pp.storeNum = :sells then 2 else pp.productStatus end), pp.storeNum = pp.storeNum - (case when pp.storeNum = -1 then 0 else :sells end) where pp.id = :id and (pp.storeNum = -1 or pp.storeNum >=:sells)
+    </query>
+    <query name="PointsProduct.getCount">
+        select count(*) from PointsProduct
+    </query>
+    <query name="PointsProduct.getCategoryNum">
+        select pp.prodCate,count(*) from PointsProduct pp where pp.productStatus in (1,3) and (pp.expireDate is null or pp.expireDate > now())  group by pp.prodCate
+    </query>
+    <query name="PointsProduct.getProductsByCategory">
+        <![CDATA[from PointsProduct pp where pp.productStatus in (1,3) and (pp.expireDate is null or pp.expireDate > now()) and (pp.prodCate=:category or :category=-1) order by pp.productStatus desc,pp.insertTime desc,pp.sellNum desc]]>
+    </query>
+    <query name="PointsProduct.getCountProductsByCategory">
+        select count(*) from PointsProduct pp where pp.productStatus in (1,3) and (pp.expireDate is null or pp.expireDate > now()) and (pp.prodCate=:category or :category=-1)
+    </query>
+    <query name="PointsProduct.getProducts">
+        <![CDATA[from PointsProduct pp where (pp.expireDate is null or pp.expireDate > now()) order by pp.productStatus desc,pp.insertTime desc,pp.sellNum desc]]>
+    </query>    
+    <query name="PointsProduct.getProductWithoutCategory">
+        <![CDATA[from PointsProduct pp where pp.prodCate not in (:categorys_list) and (pp.expireDate is null or pp.expireDate > now()) order by pp.productStatus desc,pp.insertTime desc,pp.sellNum desc]]>
+    </query>
+    <query name="PointsProduct.getProductsByMerchant">
+        from PointsProduct pp where pp.merchantId = :merchantId 
+    </query>
+ </hibernate-mapping>

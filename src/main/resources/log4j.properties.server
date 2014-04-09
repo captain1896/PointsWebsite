@@ -1,0 +1,44 @@
+# Root logging level's are fatal,error,WARN,INFO,DEBUG and we're using two logging targets
+log4j.rootCategory=ALL,A1,Err
+log4j.appender.logfile.encoding=UTF-8
+
+#####################################
+# A1
+log4j.appender.A1.Threshold=INFO
+log4j.appender.A1=org.apache.log4j.RollingFileAppender
+log4j.appender.A1.File=/var/log/bshare/bsharePoints.log
+log4j.appender.A1.MaxFileSize=20MB
+log4j.appender.A1.MaxBackupIndex=20
+
+# Truncate the log file if it aleady exists.
+log4j.appender.A1.Append=true
+
+# A1 uses PatternLayout
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c{2} - %m%n
+#####################################
+
+
+log4j.logger.com=INFO
+log4j.logger.org=INFO
+log4j.logger.net=INFO
+log4j.logger.ognl=INFO
+log4j.logger.freemarker=INFO
+
+log4j.logger.httpclient.wire=INFO
+log4j.logger.httpclient.wire.header=INFO
+log4j.logger.org.apache.commons.httpclient=INFO
+log4j.logger.code.google.struts2jsonresult=ERROR
+log4j.logger.MemCached.MemCachedClient=ERROR
+log4j.logger.com.opensymphony.xwork2.ognl.OgnlUtil=FATAL
+log4j.logger.ognl.OgnlValueStack=FATAL
+
+
+#########################################
+log4j.appender.Err=org.apache.log4j.RollingFileAppender
+log4j.appender.Err.File=/var/log/bshare/bshareErrorPoints.log
+log4j.appender.Err.Threshold=ERROR
+log4j.appender.Err.MaxFileSize=20MB
+log4j.appender.Err.MaxBackupIndex=30
+log4j.appender.Err.layout=org.apache.log4j.PatternLayout
+log4j.appender.Err.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] %c{2}.%M:%L - %m%n

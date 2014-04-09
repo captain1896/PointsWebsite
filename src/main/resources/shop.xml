@@ -1,0 +1,79 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="shop" namespace="/shop" extends="default">
+		<action name="activities" class="activityShopAction" method="activities">
+			<result>/jsp/activity/Activities.jsp</result>
+		</action>
+		<action name="product/{id}" class="productShopAction" method="product">
+			<result name="success">/jsp/shop/Product.jsp</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+		<action name="activity/{id}" class="activityShopAction" method="activity">
+			<result name="success">/jsp/activity/Activity.jsp</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+		<action name="basic" class="shopAction" method="baseInfo">
+			<result type="json" name="json"></result>
+		</action>
+		<action name="category/{category.nameEn}" class="categoryShopAction"
+			method="productCategory">
+			<result name="success">/jsp/shop/Category.jsp</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+	</package>
+	<package name="order" namespace="/shop/order" extends="default">
+		<action name="product" class="orderAction" method="orderProduct">
+			<result name="success">/jsp/shop/OrderConfirm.jsp</result>
+			<result name="rediect_userorder" type="redirect">/user/orders</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+		<action name="confirm" class="orderAction" method="orderConfirm">
+			<result name="success" type="redirect">/user/orders</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+		<action name="productjs" class="orderAction" method="orderProductJs">
+			<result type="json" name="json"></result>
+		</action>
+		<action name="points" class="pointsOrderAction" method="orderProduct">
+			<result name="success">/jsp/shop/PointsEx.jsp</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+			<result name="redirect" type="redirect">${redirectUrl}</result>
+		</action>
+		<action name="pointsconfirm" class="pointsOrderAction" method="orderConfirm">
+			<result name="success" type="redirect">/user/orders</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+		<action name="pointsproductjs" class="pointsOrderAction"
+			method="orderProductJs">
+			<result type="json" name="json"></result>
+		</action>
+		<action name="lotteryproduct" class="lotteryOrderAction"
+			method="orderProduct">
+			<result name="success">/jsp/shop/OrderConfirm.jsp</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+		<action name="lotteryconfirm" class="lotteryOrderAction"
+			method="orderConfirm">
+			<result name="success" type="redirect">/user/orders</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+		<action name="lotteryproductjs" class="lotteryOrderAction"
+			method="orderProductJs">
+			<result type="json" name="json"></result>
+		</action>
+	</package>
+
+	<package name="alipayQuickLogin" namespace="/alipayQuickLogin" extends="default">
+		<action name="login" class="alipayQuickLogin" method="tryToLogin">
+			<result name="success" type="redirect">${redirectURL}</result>
+		</action>
+		
+		<action name="callback" class="alipayQuickLogin" method="callback">
+			<result name="success" type="redirect">${redirectURL}</result>
+			<result name="error">/jsp/common/exceptionHandler.jsp</result>
+		</action>
+	</package>
+</struts>

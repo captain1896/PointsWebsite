@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/util
+      http://www.springframework.org/schema/util/spring-util-3.0.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+    default-autowire="byName">
+    
+    <context:annotation-config/>
+    <context:component-scan base-package="com.buzzinate.bshare"></context:component-scan>
+    
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations"><list>
+            <value>classpath:config.properties</value>
+            <value>classpath:config.properties.test</value>
+            <value>classpath:config.properties.local</value>
+            <value>classpath:config-core.properties</value>
+        </list></property>
+        <property name="ignoreResourceNotFound" value="true"></property>
+    </bean>
+    
+    <!-- SPRING API INJECTIONS -->
+    <bean id="textProvider" class="com.opensymphony.xwork2.DefaultTextProvider"/>
+        
+    <bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list><value>MessageResources</value></list>
+        </property>
+    </bean>
+    
+    <!-- INTERCEPTORS -->
+    <bean id="redirectMessageInterceptor"  class="com.buzzinate.common.struts2.interceptors.RedirectMessageInterceptor"/>
+        <bean id="exceptionHandlerAction" class="com.buzzinate.common.actions.ExceptionHandlerAction" />
+    
+    
+	<!-- OTHERS -->
+    <bean id="configurationFactory" 
+        class="org.apache.commons.configuration.ConfigurationFactory" >
+        <property name="configurationURL" value="classpath:configuration.xml" />
+    </bean>
+    <bean id="configuration" factory-bean="configurationFactory" factory-method="getConfiguration" />
+
+    <!-- PROCESSOR -->
+    <bean id="pointsStatisticProcessor" class="com.buzzinate.bshare.points.processor.PointsStatisticProcessor" 
+        init-method="start" destroy-method="stop">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="processPointsEventProcessor" class="com.buzzinate.bshare.points.processor.ProcessPointsEventProcessor" init-method="start" destroy-method="stop"></bean>
+    <bean id="uuidActivityEventProcessor" class="com.buzzinate.bshare.points.processor.UuidActivityEventProcessor" init-method="start" destroy-method="stop"></bean>
+    <bean id="pointsEventProcessor" class="com.buzzinate.bshare.points.processor.PointsEventProcessor" init-method="start" destroy-method="stop"></bean>
+    
+    
+    <!-- process activity task -->
+    <bean id="processActivityTaskDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="processActivityTask" />
+        </property>
+        <property name="targetMethod">
+            <value>start</value>
+        </property>
+    </bean>
+    
+    <bean id="processActivityTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="processActivityTaskDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>${bshare.task.process.activity.trigger.cron.exp}</value>
+        </property>
+    </bean>
+    
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false" autowire="no">   
+        <property name="triggers">
+            <list>   
+                <ref bean="processActivityTaskTrigger"/>
+            </list>
+        </property>
+    </bean>
+    
+    
+     <bean id="dataSourcePointsMaster" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://${bshare.setting.datasource.points.master.ip}/${bshare.setting.datasource.points.dbname}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="username" value="${bshare.setting.datasource.master.username}"/>
+        <property name="password" value="${bshare.setting.datasource.master.password}"/>
+        <property name="idleConnectionTestPeriodInMinutes" value="60"/>
+        <property name="idleMaxAgeInMinutes" value="240"/>      
+        <property name="maxConnectionsPerPartition" value="${bshare.setting.points.master.max.connections.per.partition}"/>
+        <property name="minConnectionsPerPartition" value="${bshare.setting.points.master.min.connections.per.partition}"/>
+        <property name="partitionCount" value="${bshare.setting.points.master.partition.count}"/>
+        <property name="acquireIncrement" value="10"/>                              
+        <property name="statementsCacheSize" value="50"/>
+        <property name="releaseHelperThreads" value="3"/>
+        <property name="closeConnectionWatch" value="false"/>
+    </bean>
+     
+    <bean id="dataSourcePointsSlave" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://${bshare.setting.datasource.points.slave.ip}/${bshare.setting.datasource.points.dbname}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="username" value="${bshare.setting.datasource.slave.username}"/>
+        <property name="password" value="${bshare.setting.datasource.slave.password}"/>
+        <property name="idleConnectionTestPeriodInMinutes" value="60"/>
+        <property name="idleMaxAgeInMinutes" value="240"/>      
+        <property name="maxConnectionsPerPartition" value="${bshare.setting.points.slave.max.connections.per.partition}"/>
+        <property name="minConnectionsPerPartition" value="${bshare.setting.points.slave.min.connections.per.partition}"/>
+        <property name="partitionCount" value="${bshare.setting.points.slave.partition.count}"/>
+        <property name="acquireIncrement" value="10"/>                              
+        <property name="statementsCacheSize" value="50"/>
+        <property name="releaseHelperThreads" value="3"/>
+        <property name="closeConnectionWatch" value="false"/>
+    </bean>
+    
+    <bean id="dataSource" class="com.buzzinate.bshare.points.db.MasterSlaveRoutingDataSource">
+         <property name="targetDataSources">
+            <map>
+                <entry key="SLAVE" value-ref="dataSourceMainSlave"/>
+                <entry key="MASTER" value-ref="dataSourceMainMaster"/>
+                <entry key="SLAVE_POINTS" value-ref="dataSourcePointsSlave"/>
+                <entry key="MASTER_POINTS" value-ref="dataSourcePointsMaster"/>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="dataSourcePointsSlave"/>
+    </bean>
+
+    <bean id="masterSlaveTxInterceptor"
+        class="com.buzzinate.bshare.points.db.MasterSlaveTransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="transactionAttributeSource">
+            <bean class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
+        </property>
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>    
+</beans>

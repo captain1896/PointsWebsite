@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<sql-query name="userPointsPool.getCount">
+		<return-scalar column="count" type="int"/>
+	   select count from points_user_points_pool where user_id = :userId and activity_id = :activityId and point_type = :pointType
+	</sql-query>
+	<sql-query name="userPointsPool.isExitsByActivity">
+		<return-scalar column="count" type="long"/>
+	   select count(*) count from points_user_points_pool where activity_id = :activityId limit 0,2
+	</sql-query>
+	<sql-query name="userPointsPool.getCountByDate">
+		<return-scalar column="count" type="int"/>
+	   select count from points_user_points_pool where user_id = :userId and activity_id = :activityId and point_type = :pointType and date_day = :dateDay
+	</sql-query>	
+	<sql-query name="userPointsPool.incrCounter">
+        insert into points_user_points_pool (user_id, activity_id, point_type, count) 
+        values (:userId, :activityId, :pointType, 1)
+        on duplicate key update
+            count = count + 1
+    </sql-query>
+	<sql-query name="userPointsPool.incrCounterPlusCount">
+        insert into points_user_points_pool (user_id, activity_id, point_type, count) 
+        values (:userId, :activityId, :pointType, :count)
+        on duplicate key update
+            count = count + :count
+    </sql-query>
+	<sql-query name="userPointsPool.reIncrCounter">
+		update points_user_points_pool set count = count - :num where user_id = :userId and activity_id = :activityId and point_type = :pointType and count >= :num
+    </sql-query>
+	<sql-query name="userPointsPool.createIncrCounterByDate">
+        insert into points_user_points_pool (user_id, activity_id, point_type, date_day, count) 
+        values (:userId, :activityId, :pointType, :dateDay, 0)
+        on duplicate key update
+            count = count - count,
+            date_day = :dateDay
+    </sql-query>
+	<sql-query name="userPointsPool.getUserActivity">
+		<return-scalar column="activity_id" type="int"/>
+	   select distinct(activity_id) activity_id from points_user_points_pool where user_id = :userId
+	</sql-query>
+ </hibernate-mapping>

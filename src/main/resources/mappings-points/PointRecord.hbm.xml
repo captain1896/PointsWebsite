@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.PointRecord" table="points_user_point_record">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="participantId" >
+			<column name="PARTICIPANT_ID" />
+		</property>
+		<property name="activityId" >
+			<column name="ACTIVITY_ID" />
+		</property>
+		<property name="points" >
+			<column name="POINTS" />
+		</property>
+		<property name="time" >
+			<column name="TIME" />
+		</property>
+		<property name="pointsType" column="TYPE">
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.core.bean.enums.PointsType</param>
+			</type>
+		</property>
+        <property name="statusType" column="STATUS">
+            <type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+                <param name="enum">com.buzzinate.bshare.points.bean.enums.StatusType</param>
+            </type>
+        </property>		
+	</class>
+	
+    <query name="pointRecord.getRecords">
+        from PointRecord pr where pr.participantId = :userId order by pr.time desc
+    </query>
+    <query name="pointRecord.getActivityRecords">         
+        select new com.buzzinate.bshare.points.bean.PointRecord(
+            pr.participantId, pr.activityId, coalesce(sum(pr.points), 0), a.name)
+        from PointRecord pr, Activity a 
+        where pr.participantId = :userId and pr.activityId = a.id
+        group by pr.activityId 
+        order by pr.time desc
+    </query>
+    <query name="pointRecord.getPointRecordsByActivityId">
+        from PointRecord pr where pr.activityId = :activityId order by pr.time desc
+    </query>
+    <sql-query name="pointRecord.getTotalPointsFromActivity">
+        <return-scalar column="points" type="int"/>
+        SELECT COALESCE(sum(points),0) points
+        FROM points_user_point_record
+        WHERE PARTICIPANT_ID = :userId and ACTIVITY_ID = :activityId and TYPE = :pointsType
+    </sql-query>
+    <sql-query name="pointRecord.getTotalPointsFromActivityToday">
+        <return-scalar column="points" type="int"/>
+        SELECT COALESCE(sum(points),0) points
+        FROM points_user_point_record
+        WHERE PARTICIPANT_ID = :userId and ACTIVITY_ID = :activityId  
+            and time >= :today
+    </sql-query>
+     <sql-query name="pointRecord.updateUserId">
+     	update points_user_point_record set PARTICIPANT_ID = :targetId where PARTICIPANT_ID = :sourceId
+    </sql-query>
+</hibernate-mapping>

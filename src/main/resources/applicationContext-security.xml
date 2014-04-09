@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+    
+	<http auto-config="false"  path-type="regex" entry-point-ref="casEntryPoint">
+	    <access-denied-handler ref="customAccessDeniedHandler"/>
+	    <intercept-url pattern="/.*\.ico" filters="none" />
+        <intercept-url pattern='/decorators/.*' access='ROLE_FORBIDDEN' />
+        <intercept-url pattern='/jsp/.*' access='ROLE_FORBIDDEN' />
+        <!-- for admin -->
+        <intercept-url pattern="/admin/*.*" access="ROLE_POINTS_ADMIN"/>
+        <!-- for publisher -->
+        <intercept-url pattern="/publisher/*.*" access="ROLE_POINTS_PUBLISHER"/>
+        <!-- for user -->
+        <intercept-url pattern="/user/*.*" access="ROLE_USER"/>
+		<!-- for common -->
+		<!-- 登录直接跳转到passport -->
+		<intercept-url pattern="/login" access="ROLE_USER"/>
+		<intercept-url pattern='/.*' access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        
+        <custom-filter position="LOGOUT_FILTER" ref="requestSingleLogoutFilter"/>
+        <custom-filter before="LOGOUT_FILTER" ref="singleLogoutFilter"/>
+        <custom-filter position="FIRST" ref="customPreCasAuthenticationFilter"/>
+        <custom-filter position="CAS_FILTER" ref="casFilter"/>
+        <custom-filter position="REMEMBER_ME_FILTER" ref="customRememberMeProcessingFilter" />
+        <custom-filter after="REMEMBER_ME_FILTER" ref="clientLoginAuthenticationFilter"/>
+	</http>
+
+    <authentication-manager alias="authenticationManager">
+       <authentication-provider ref="casAuthProvider" />
+    </authentication-manager>
+    
+    <beans:bean id="customAccessDeniedHandler" class="com.buzzinate.bshare.sso.filter.CustomAccessDeniedHandlerImpl">
+        <beans:property name="errorPage" value="/AccessDenied"/>
+    </beans:bean>
+    
+</beans:beans>
+

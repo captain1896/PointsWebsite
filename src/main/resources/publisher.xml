@@ -1,0 +1,168 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="publisher" namespace="/publisher" extends="default">
+        <result-types>
+            <result-type name="json"
+                class="code.google.struts2jsonresult.JSONResult">
+                <param name="prettyPrint">true</param>
+                <param name="target">results</param>
+                <param name="deepSerialize">true</param>
+                <param name="out.noCache">true</param>
+                <param name="patterns">-*.class</param>
+            </result-type>
+            <result-type name="jsonUpload"
+                class="code.google.struts2jsonresult.JSONResult">
+                <param name="out.contentType">text/html</param>
+                <param name="prettyPrint">true</param>
+                <param name="target">results</param>
+                <param name="deepSerialize">true</param>
+                <param name="out.noCache">true</param>
+                <param name="patterns">-*.class</param>
+            </result-type>
+        </result-types>
+
+        <interceptors>
+            <interceptor name="redirectMessageInterceptor"
+                  class="redirectMessageInterceptor">
+            </interceptor>
+   
+            <interceptor-stack name="bShareDefaultStack">
+                <interceptor-ref name="redirectMessageInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>  
+        </interceptors>
+        
+        <default-interceptor-ref name="bShareDefaultStack"></default-interceptor-ref>
+         
+        <global-results>
+            <result name="login">/jsp/user/Login.jsp</result>
+            <result name="verify">/jsp/user/Verify.jsp</result>
+            <result name="input">/jsp/common/Error.jsp</result>
+            <result name="error">/jsp/common/Error.jsp</result>
+            <result name="errorException" type="chain">exceptionHandler</result>
+        </global-results>
+
+         <!-- comment out for development -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="errorException" />
+        </global-exception-mappings>
+        
+        <action name="**">
+            <result>/jsp/common/Error404.jsp</result>
+        </action>
+        
+        <action name="exceptionHandler" class="exceptionHandlerAction">
+            <result name="success">/jsp/common/Error.jsp</result>
+        </action>
+    
+        <action name="account" class="accountAction">
+            <result name="success">/jsp/publisher/Account.jsp</result>
+            <result name="input">/jsp/publisher/Account.jsp</result>
+            <result name="error">/jsp/publisher/Account.jsp</result>
+        </action>
+        
+        <action name="userDashboard" class="userDashboard">
+            <result name="success">/jsp/publisher/UserDashboard.jsp</result>
+            <result name="input">/jsp/publisher/UserDashboard.jsp</result>
+            <result name="error">/jsp/publisher/UserDashboard.jsp</result>
+        </action>
+        
+        <action name="activityStats" class="activityStatisticsAction" method="stats">
+            <result name="success">/jsp/publisher/ActivityStats.jsp</result>
+            <result name="input">/jsp/publisher/ActivityStats.jsp</result>
+            <result name="error">/jsp/publisher/ActivityStats.jsp</result>
+        </action>
+        <action name="activityContrast" class="activityStatisticsAction" method="contrast">
+            <result name="success">/jsp/publisher/ActivityContrast.jsp</result>
+            <result name="input">/jsp/publisher/ActivityContrast.jsp</result>
+            <result name="error">/jsp/publisher/ActivityContrast.jsp</result>
+        </action>
+        <action name="userStats" class="activityStatisticsAction" method="userStats">
+            <result name="success">/jsp/publisher/UserStats.jsp</result>
+            <result name="input">/jsp/publisher/UserStats.jsp</result>
+            <result name="error">/jsp/publisher/UserStats.jsp</result>
+        </action>
+        <action name="getPlatformChart" class="activityStatisticsAction" method="getPlatformChart">
+            <result type="json" name="json"></result>
+        </action> 
+        
+    </package>
+    
+    <package name="account" namespace="/publisher/account" extends="default">
+    
+        <action name="records" class="accountAction" method="records">
+            <result type="json" name="json"></result>
+        </action>
+        <action name="chargeRecords" class="accountAction" method="chargeRecords">
+            <result type="json" name="json"></result>
+        </action>
+        <action name="usedRecords" class="accountAction" method="usedRecords">
+            <result type="json" name="json"></result>
+        </action>
+    </package>
+    
+    
+    <package name="activity" namespace="/publisher/activity" extends="default">
+        <action name="list" class="activityAction" method="list">
+            <interceptor-ref name="bShareDefaultStack">
+                <param name="validation.excludeMethods">input,list</param>
+                <param name="workflow.excludeMethods">input,list</param>
+            </interceptor-ref>
+            <result name="success">/jsp/publisher/Activities.jsp</result>
+            <result name="input">/jsp/publisher/Activities.jsp</result>
+            <result name="error">/jsp/publisher/Activities.jsp</result>
+        </action>
+        <action name="add" class="activityAction" method="add">
+            <result name="success">/jsp/publisher/ActivityEditor.jsp</result>
+            <result name="error">/jsp/publisher/Activities.jsp</result>
+        </action>
+        <action name="edit/{id}" class="activityAction" method="edit">
+            <result name="success">/jsp/publisher/ActivityEditor.jsp</result>
+            <result type="redirect" name="list">list</result>
+        </action>
+        <action name="preview" class="activityAction" method="preview">
+            <result name="success">/jsp/publisher/ActivityPreview.jsp</result>
+            <result name="error">/jsp/publisher/ActivityEditor.jsp</result>
+        </action>
+        <action name="create" class="activityAction" method="save">
+            <result type="redirect" name="success">list</result>
+            <result name="error">/jsp/publisher/ActivityEditor.jsp</result>
+        </action>
+        <action name="update" class="activityAction" method="update">
+            <result type="redirect" name="success">list</result>
+            <result type="redirect" name="list">list</result>
+            <result name="error">/jsp/publisher/ActivityEditor.jsp</result>
+        </action>
+        <action name="delete/{id}" class="activityAction" method="delete">
+            <result type="redirect" name="success">list</result>
+            <result type="redirect" name="error">list</result>
+        </action>
+        <action name="finish/{id}" class="activityAction" method="finish">
+            <result type="redirect" name="success">list</result>
+            <result type="redirect" name="error">list</result>
+        </action>
+        
+        <action name="pointRecords" class="activityAction" method="pointRecords">
+            <result name="success">/jsp/publisher/PointRecords.jsp</result>
+        </action>
+    </package>
+    
+    <package name="product" namespace="/publisher/product" extends="default">
+        <action name="list">
+            <result name="success">/jsp/publisher/Activities.jsp</result>
+        </action>
+        <action name="add" class="activityAction" method="add">
+            <result name="success">/jsp/publisher/ActivityEditor.jsp</result>
+        </action>
+        <action name="edit/{id}" class="activityAction" method="edit">
+            <result name="success">/jsp/publisher/ActivityEditor.jsp</result>
+        </action>
+        <action name="preview" class="activityAction" method="preview">
+            <result name="success">/jsp/publisher/ActivityPreview.jsp</result>
+        </action>
+    </package>
+        
+</struts>

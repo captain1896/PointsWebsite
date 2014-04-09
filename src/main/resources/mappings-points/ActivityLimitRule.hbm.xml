@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.ActivityLimitRule" table="points_activity_limit_rule">  
+	    <id name="activityId" column="ACTIVITY_ID">
+	        <generator class="foreign">
+	           <param name="property">activity</param>
+	        </generator>
+		</id>
+		<one-to-one name="activity" class="com.buzzinate.bshare.points.bean.Activity"/>
+        <property name="domain">
+            <column name="DOMAIN"></column>
+        </property>
+		<property name="shareLimitNo">
+		    <column name="SHARE_LIMIT_NO"/>
+		</property>
+		<property name="clickBackLimitNo">
+		    <column name="CLICKBACK_LIMIT_NO"/>
+		</property>
+	</class>    
+	
+    <sql-query name="ActivityLimitRule.updateInfo">
+        update points_activity_limit_rule set domain = :domain, share_limit_no = :share_limit_no, clickback_limit_no = :clickback_limit_no where activity_id =:activity_id
+    </sql-query>
+</hibernate-mapping>

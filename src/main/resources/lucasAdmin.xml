@@ -1,0 +1,42 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="admin2" namespace="/admin2" extends="default">
+		<action name="lucasproduct" class="lucasProductManageAction">
+			<result name="success">/jsp/admin/LucasProduct.jsp</result>
+		</action>
+        
+        <action name="product" class="lucasProductManageAction" method="execute">
+        	<result type="dispacher" name="success">/jsp/admin/Product.jsp</result>
+        	<result name="input">/jsp/adim/Product.jsp</result>
+        	<result name="error">/jps/admin/Product.jsp</result>
+        </action>
+        
+		<action name="addProduct" class="lucasProductManageAction" method="add">
+			<result name="success">/jsp/admin/AddProduct.jsp</result>
+		</action>
+		
+		<action name="createProduct" class="lucasProductManageAction" method="create">
+			<result type="redirect" name="success">product</result>
+			<result name="error" >/jsp/admin/AddProduct.jsp</result>
+		</action>
+		
+		<action name="deleteProduct/{id}" class="productManageAction" method="delete">
+            <result type="redirect" name="success">product</result>
+            <result type="redirect" name="error">product</result>
+        </action>
+        
+        <action name="editProduct/{id}" class="lucasProductManageAction" method="edit">
+        	<result name="success">/jsp/admin/EditProduct.jsp</result>
+        </action>
+        
+        <action name="updateProduct" class="lucasProductManageAction" method="update">
+            <result type="redirect" name="success">product</result>
+            <result name="input">/jsp/admin/EditProduct.jsp</result>
+            <result name="error">/jsp/admin/EditProduct.jsp</result>
+        </action>
+		
+	</package>
+</struts>

@@ -1,0 +1,25 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="product" namespace="/merchant/product" extends="default">
+        <action name="list" class="productManageAction" method="list">
+            <result name="success">/jsp/merchant/PointsProducts.jsp</result>
+            <result name="error">/jsp/common/exceptionHandler.jsp</result>
+        </action>
+        <action name="add" class="productManageAction" method="load">
+            <result name="success">/jsp/merchant/ProductEditor.jsp</result>
+            <result name="error">/jsp/common/exceptionHandler.jsp</result>
+        </action>
+        <action name="edit/{id}" class="productManageAction" method="load">
+            <result name="success">/jsp/merchant/ProductEditor.jsp</result>
+            <result name="error">/jsp/common/exceptionHandler.jsp</result>
+        </action>
+        <action name="preview" class="productManageAction" method="preview">
+            <result name="success">/jsp/merchant/ProductPreview.jsp</result>
+            <result name="error">/jsp/common/exceptionHandler.jsp</result>
+        </action>
+    </package>
+        
+</struts>

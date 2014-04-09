@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.Merchant" table="points_merchant">
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="name" >
+			<column name="name" />
+		</property>
+		<property name="homeURL" >
+			<column name="home_url" />
+		</property>
+		<property name="joinTime" >
+			<column name="join_time" />
+		</property>
+		<property name="userId" >
+			<column name="user_id" />
+		</property>
+		<property name="email" >
+			<column name="user_mail" />
+		</property>
+	</class>
+	<query name="merchant.getMerchantByEmail">
+	   from Merchant where email = :email
+	</query>
+    <query name="merchant.getAll">
+       from Merchant
+    </query>
+ </hibernate-mapping>

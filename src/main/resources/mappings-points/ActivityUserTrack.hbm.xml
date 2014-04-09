@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.ActivityUserTrack" table="points_activity_user_track">  
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="activityId" >
+            <column name="ACTIVITY_ID" />
+        </property>
+        <property name="userId" >
+            <column name="USER_ID" />
+        </property>
+		<property name="userIP" >
+			<column name="USER_IP" />
+		</property>
+		<property name="url" >
+			<column name="URL" />
+		</property>
+		<property name="vId" >
+			<column name="V_ID" />
+		</property>
+		<property name="burlId" >
+			<column name="BURL_ID" />
+		</property>
+		<property name="pointsType" column="POINTS_TYPE">
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.core.bean.enums.PointsType</param>
+			</type>
+		</property>
+		<property name="insertTime" >
+            <column name="INSERT_TIME" />
+        </property>
+		<property name="platformId" >
+            <column name="PLATFORM_ID" />
+        </property>
+        <property name="shareId" >
+            <column name="SHARE_ID" />
+        </property>
+	</class>
+    
+</hibernate-mapping>

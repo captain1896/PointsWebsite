@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.PointsUserAccount" table="points_user_account">
+	   <id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="userId" >
+			<column name="user_id" />
+		</property>
+		<property name="pointsCate" column="points_cate" >
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.PointsCategory</param>
+			</type>
+		</property>
+		<property name="accountName" >
+			<column name="account_name" />
+		</property>
+		
+		<property name="updateTime" >
+			<column name="update_time" />
+		</property>
+	</class>
+</hibernate-mapping>

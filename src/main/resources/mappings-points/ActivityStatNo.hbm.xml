@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.ActivityStatNo" table="points_activity_stat_no">  
+	    <id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="activityId" >
+            <column name="ACTIVITY_ID" />
+        </property>
+        <property name="recordId" >
+            <column name="RECORD_ID" />
+        </property>
+		<property name="statType" column="STAT_TYPE">
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.ActivityStatType</param>
+			</type>
+		</property>
+		<property name="currentDate" >
+            <column name="CURR_DATE" />
+        </property>
+        <property name="totalNo" >
+            <column name="TOTAL_NO" />
+        </property>
+	</class>
+	<query name="ActivityStatNo.ircounterNo">
+	   <![CDATA[update ActivityStatNo t set t.totalNo = t.totalNo +1 where t.activityId = :activityId and t.recordId = :recordId and t.statType =:statType and t.currentDate = CURDATE() and t.totalNo <=:limitNo]]>
+	</query>
+	<query name="ActivityStatNo.ircounterNoById">
+	   <![CDATA[update ActivityStatNo t set t.totalNo = t.totalNo +1 where t.id=:id and t.totalNo <=:limitNo]]>
+	</query>
+	<sql-query name="ActivityStatNo.getTotalNo">
+	    <return-scalar column="total_no" type="long"/>
+	    select ifNULL(SUM(t.TOTAL_NO),0) as total_no from points_activity_stat_no t where t.ACTIVITY_ID=:activityId and t.STAT_TYPE =:stat_type and t.RECORD_ID =:recordId and t.CURR_DATE = CURDATE()
+	</sql-query>
+    <sql-query name="ActivityStatNo.insertStat">
+        insert into points_activity_stat_no(ACTIVITY_ID,RECORD_ID,STAT_TYPE,CURR_DATE,TOTAL_NO)
+        values(:activityId,:recordId,:statType,CURDATE(),:totalNo)
+        on duplicate key update TOTAL_NO = TOTAL_NO +:totalNo 
+    </sql-query>
+    
+</hibernate-mapping>

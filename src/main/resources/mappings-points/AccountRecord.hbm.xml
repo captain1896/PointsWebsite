@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.AccountRecord" table="points_account_record">  
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="publisherId" >
+			<column name="PUBLISHER_ID" />
+		</property>
+		<property name="activityId" >
+            <column name="ACTIVITY_ID" />
+        </property>
+		<property name="points" >
+			<column name="POINTS" />
+		</property>
+		<property name="time" >
+			<column name="TIME" />
+		</property>
+		<property name="type" column="TYPE">
+			<type name="com.buzzinate.common.hibernate.IntegerValuedEnumType">
+				<param name="enum">com.buzzinate.bshare.points.bean.enums.AccountRecordType</param>
+			</type>
+		</property>
+		<property name="description" >
+            <column name="DESCRIPTION" />
+        </property>
+	</class>
+	
+    <query name="accountRecord.getRecords">
+        from AccountRecord ar where ar.publisherId = :publisherId
+        and ar.time between :startDate and :endDate order by ar.time desc
+    </query>
+    
+    <query name="accountRecord.getRecordsByType">
+        from AccountRecord ar where ar.publisherId = :publisherId
+        and ar.time between :startDate and :endDate and ar.type=:type order by ar.time desc
+    </query>
+    
+</hibernate-mapping>

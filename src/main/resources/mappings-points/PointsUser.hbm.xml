@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.buzzinate.bshare.points.bean.PointsUser" table="points_user">
+	    <id name="userId" column="PARTICIPANT_ID">
+		</id>
+		<property name="points" >
+			<column name="POINTS" />
+		</property>
+		<property name="status" >
+			<column name="STATUS" />
+		</property>
+		<property name="contactName" >
+			<column name="contact_name" />
+		</property>
+		<property name="state" >
+			<column name="state" />
+		</property>
+		<property name="city" >
+			<column name="city" />
+		</property>
+		<property name="contactAddress" >
+			<column name="contact_address" />
+		</property>
+		<property name="contactNo" >
+			<column name="contact_no" />
+		</property>
+		<property name="zipCode" >
+			<column name="zip_code" />
+		</property>
+	</class>
+	<query name="PointsUser.getPointsByUserId">
+        from PointsUser s where s.userId = :userId
+    </query>
+    <query name="PointsUser.updatePointUserOrder">
+        update PointsUser pu set pu.points = pu.points - :points
+                      where pu.userId = :userId and pu.points >=:points
+    </query>
+    <sql-query name="PointsUser.insertOrUpdateUserContact">
+      insert into points_user(PARTICIPANT_ID,points,contact_name,state,city,contact_address,contact_no,zip_code)
+           values(:userId,:points,:name,:state,:city,:address,:contactNo,:zipCode)
+      on duplicate key update 
+         contact_name = :name,state=:state,city=:city,contact_address=:address,contact_no=:contactNo,zip_code= :zipCode
+    </sql-query>
+    <sql-query name="PointsUser.addPoints">
+        insert into points_user (participant_id, points, status) 
+        values (:participantId, :points, 1)
+        on duplicate key update
+            points = points + :points
+    </sql-query>
+    <sql-query name="PointsUser.getUserPointsByActivity">
+        <return-scalar column="points" type="int"/>       
+        select coalesce(sum(points), 0) points
+        from points_user_point_record 
+        where participant_id = :userId and activity_id = :activityId
+    </sql-query>
+    <sql-query name="PointsUser.updatePointsUserId">
+		update points_user set PARTICIPANT_ID = :targetId where PARTICIPANT_ID = :sourceId
+    </sql-query>
+    
+    <sql-query name="PointsUser.mergePoints">
+		update points_user set points = points + :points where PARTICIPANT_ID = :targetId
+    </sql-query>
+    <sql-query name="PointsUser.delete">
+		update points_user set status = 0 where PARTICIPANT_ID = :id
+    </sql-query>
+    
+</hibernate-mapping>
